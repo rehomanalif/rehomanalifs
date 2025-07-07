@@ -5,206 +5,121 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { 
-  ArrowRight, 
-  Facebook, 
-  Instagram, 
-  Linkedin, 
-  Twitter,
-  Check,
-  Target,
-  Megaphone,
-  Palette,
-  Mail,
-  BookOpen,
-  Star,
-  Users,
-  TrendingUp,
-  Search,
-  Zap
-} from 'lucide-react';
-
+import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, Check, Target, Megaphone, Palette, Mail, BookOpen, Star, Users, TrendingUp, Search, Zap } from 'lucide-react';
 const Portfolio = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
-      offset: 100,
+      offset: 100
     });
   }, []);
-
-  const services = [
-    {
-      icon: Target,
-      title: "Meta Ads Expert",
-      description: "High-converting Facebook & Instagram ads that drive real results and maximize your ROI.",
-      features: [
-        "Advanced audience targeting",
-        "Creative optimization",
-        "Conversion tracking",
-        "A/B testing strategies",
-        "Budget optimization"
-      ],
-      link: "https://www.fiverr.com/alifpixelpro"
-    },
-    {
-      icon: Megaphone,
-      title: "Social Media Marketing",
-      description: "Complete social media strategy and management to build your brand and engage your audience.",
-      features: [
-        "Content strategy & creation",
-        "Community management",
-        "Brand storytelling",
-        "Influencer partnerships",
-        "Analytics & reporting"
-      ],
-      link: "https://www.fiverr.com/alifpixelpro"
-    },
-    {
-      icon: Palette,
-      title: "Web Design",
-      description: "Stunning websites built on Framer, WordPress, and Wix that convert visitors into customers.",
-      features: [
-        "Custom design systems",
-        "Mobile-first approach",
-        "SEO optimization",
-        "Speed optimization",
-        "Conversion-focused design"
-      ],
-      link: "https://www.fiverr.com/alifpixelpro"
-    },
-    {
-      icon: Mail,
-      title: "Email Marketing",
-      description: "Automated email campaigns that nurture leads and drive sales with personalized messaging.",
-      features: [
-        "Email automation",
-        "List segmentation",
-        "Campaign design",
-        "Performance tracking",
-        "A/B testing"
-      ],
-      link: "https://www.fiverr.com/alifpixelpro"
-    },
-    {
-      icon: BookOpen,
-      title: "eBook Writing & Design",
-      description: "Professional eBooks that establish authority and generate leads for your business.",
-      features: [
-        "Content research & writing",
-        "Professional design",
-        "Interactive elements",
-        "Lead magnets",
-        "Distribution strategy"
-      ],
-      link: "https://www.fiverr.com/alifpixelpro"
-    }
-  ];
-
-  const portfolioCategories = [
-    "All Projects",
-    "Meta Ads",
-    "Social Media",
-    "Web Design",
-    "Email Marketing",
-    "eBooks"
-  ];
-
-  const portfolioItems = [
-    {
-      category: "Meta Ads",
-      title: "E-commerce Store - 300% ROAS",
-      description: "Scaled monthly revenue from $10K to $45K with strategic Facebook ads",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      results: "300% ROAS, 450% Revenue Growth"
-    },
-    {
-      category: "Web Design",
-      title: "SaaS Landing Page",
-      description: "Modern, conversion-optimized landing page built with Framer",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      results: "65% Conversion Rate Increase"
-    },
-    {
-      category: "Social Media",
-      title: "Personal Brand Growth",
-      description: "Grew Instagram following from 5K to 50K in 6 months",
-      image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      results: "900% Follower Growth"
-    },
-    {
-      category: "Email Marketing",
-      title: "B2B Lead Nurturing",
-      description: "Automated email sequence that converts 35% of leads",
-      image: "https://images.unsplash.com/photo-1596526131077-f5b73c4e8e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      results: "35% Lead Conversion Rate"
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "E-commerce Owner",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b829?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-      review: "Alif transformed our ad performance completely. Our ROAS went from 1.2x to 4.5x in just 3 months. Incredible results!"
-    },
-    {
-      name: "Michael Chen",
-      role: "SaaS Founder",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-      review: "The website Alif designed for us is stunning and converts amazingly well. Our demo requests increased by 200%."
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Digital Agency Owner",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-      review: "Professional, creative, and results-driven. Alif's social media strategies helped us land 5 major clients."
-    },
-    {
-      name: "David Thompson",
-      role: "Online Coach",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-      review: "The email campaigns Alif created for me have a 45% open rate and 12% conversion rate. Best investment ever!"
-    },
-    {
-      name: "Lisa Wang",
-      role: "Tech Startup CEO",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-      review: "Alif's expertise in Meta ads helped us acquire customers 60% cheaper than our previous agency. Highly recommended!"
-    },
-    {
-      name: "James Miller",
-      role: "Real Estate Agent",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-      review: "The lead generation campaigns Alif set up brought me 50+ qualified leads per month. My business has never been better."
-    }
-  ];
-
-  const processSteps = [
-    {
-      icon: Search,
-      title: "Discovery & Goal Mapping",
-      description: "Deep dive into your business, audience, and objectives to create a tailored strategy."
-    },
-    {
-      icon: Target,
-      title: "Strategy & Creative Setup",
-      description: "Develop comprehensive campaigns with compelling creatives and precise targeting."
-    },
-    {
-      icon: Zap,
-      title: "Launch & Optimize",
-      description: "Execute campaigns with real-time monitoring and continuous optimization."
-    },
-    {
-      icon: TrendingUp,
-      title: "Analyze & Scale",
-      description: "Measure results, identify opportunities, and scale what works best."
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const services = [{
+    icon: Target,
+    title: "Meta Ads Expert",
+    description: "High-converting Facebook & Instagram ads that drive real results and maximize your ROI.",
+    features: ["Advanced audience targeting", "Creative optimization", "Conversion tracking", "A/B testing strategies", "Budget optimization"],
+    link: "https://www.fiverr.com/alifpixelpro"
+  }, {
+    icon: Megaphone,
+    title: "Social Media Marketing",
+    description: "Complete social media strategy and management to build your brand and engage your audience.",
+    features: ["Content strategy & creation", "Community management", "Brand storytelling", "Influencer partnerships", "Analytics & reporting"],
+    link: "https://www.fiverr.com/alifpixelpro"
+  }, {
+    icon: Palette,
+    title: "Web Design",
+    description: "Stunning websites built on Framer, WordPress, and Wix that convert visitors into customers.",
+    features: ["Custom design systems", "Mobile-first approach", "SEO optimization", "Speed optimization", "Conversion-focused design"],
+    link: "https://www.fiverr.com/alifpixelpro"
+  }, {
+    icon: Mail,
+    title: "Email Marketing",
+    description: "Automated email campaigns that nurture leads and drive sales with personalized messaging.",
+    features: ["Email automation", "List segmentation", "Campaign design", "Performance tracking", "A/B testing"],
+    link: "https://www.fiverr.com/alifpixelpro"
+  }, {
+    icon: BookOpen,
+    title: "eBook Writing & Design",
+    description: "Professional eBooks that establish authority and generate leads for your business.",
+    features: ["Content research & writing", "Professional design", "Interactive elements", "Lead magnets", "Distribution strategy"],
+    link: "https://www.fiverr.com/alifpixelpro"
+  }];
+  const portfolioCategories = ["All Projects", "Meta Ads", "Social Media", "Web Design", "Email Marketing", "eBooks"];
+  const portfolioItems = [{
+    category: "Meta Ads",
+    title: "E-commerce Store - 300% ROAS",
+    description: "Scaled monthly revenue from $10K to $45K with strategic Facebook ads",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    results: "300% ROAS, 450% Revenue Growth"
+  }, {
+    category: "Web Design",
+    title: "SaaS Landing Page",
+    description: "Modern, conversion-optimized landing page built with Framer",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    results: "65% Conversion Rate Increase"
+  }, {
+    category: "Social Media",
+    title: "Personal Brand Growth",
+    description: "Grew Instagram following from 5K to 50K in 6 months",
+    image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    results: "900% Follower Growth"
+  }, {
+    category: "Email Marketing",
+    title: "B2B Lead Nurturing",
+    description: "Automated email sequence that converts 35% of leads",
+    image: "https://images.unsplash.com/photo-1596526131077-f5b73c4e8e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    results: "35% Lead Conversion Rate"
+  }];
+  const testimonials = [{
+    name: "Sarah Johnson",
+    role: "E-commerce Owner",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b829?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    review: "Alif transformed our ad performance completely. Our ROAS went from 1.2x to 4.5x in just 3 months. Incredible results!"
+  }, {
+    name: "Michael Chen",
+    role: "SaaS Founder",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    review: "The website Alif designed for us is stunning and converts amazingly well. Our demo requests increased by 200%."
+  }, {
+    name: "Emily Rodriguez",
+    role: "Digital Agency Owner",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    review: "Professional, creative, and results-driven. Alif's social media strategies helped us land 5 major clients."
+  }, {
+    name: "David Thompson",
+    role: "Online Coach",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    review: "The email campaigns Alif created for me have a 45% open rate and 12% conversion rate. Best investment ever!"
+  }, {
+    name: "Lisa Wang",
+    role: "Tech Startup CEO",
+    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    review: "Alif's expertise in Meta ads helped us acquire customers 60% cheaper than our previous agency. Highly recommended!"
+  }, {
+    name: "James Miller",
+    role: "Real Estate Agent",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    review: "The lead generation campaigns Alif set up brought me 50+ qualified leads per month. My business has never been better."
+  }];
+  const processSteps = [{
+    icon: Search,
+    title: "Discovery & Goal Mapping",
+    description: "Deep dive into your business, audience, and objectives to create a tailored strategy."
+  }, {
+    icon: Target,
+    title: "Strategy & Creative Setup",
+    description: "Develop comprehensive campaigns with compelling creatives and precise targeting."
+  }, {
+    icon: Zap,
+    title: "Launch & Optimize",
+    description: "Execute campaigns with real-time monitoring and continuous optimization."
+  }, {
+    icon: TrendingUp,
+    title: "Analyze & Scale",
+    description: "Measure results, identify opportunities, and scale what works best."
+  }];
+  return <div className="min-h-screen bg-background">
       {/* Modern Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
         <div className="container mx-auto px-6 py-4">
@@ -233,11 +148,11 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8" data-aos="fade-right">
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              <h1 className="text-5xl font-bold leading-tight md:text-4xl">
                 Let's build Ads that <span className="text-yellow-300">Sell</span><br />
                 and Design that <span className="text-yellow-300">Convert</span>
               </h1>
-              <p className="text-xl md:text-2xl opacity-90 leading-relaxed">
+              <p className="text-xl opacity-90 leading-relaxed md:text-xl">
                 I help ambitious businesses scale with high-converting Meta ads, 
                 stunning web design, and strategic digital marketing that drives real results.
               </p>
@@ -249,11 +164,7 @@ const Portfolio = () => {
             </div>
             <div className="relative" data-aos="fade-left">
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                 <img 
-                   src="/hero-image.png" 
-                   alt="Rehoman Alif - Digital Marketing Expert"
-                   className="w-full h-auto object-cover"
-                 />
+                 <img src="/hero-image.png" alt="Rehoman Alif - Digital Marketing Expert" className="w-full h-auto object-cover" />
               </div>
               <div className="absolute inset-0 gradient-accent rounded-3xl blur-2xl opacity-30 -z-10"></div>
             </div>
@@ -314,8 +225,7 @@ const Portfolio = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-delay={index * 100}>
+            {services.map((service, index) => <Card key={index} className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300" data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className="absolute inset-0 gradient-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
                 <CardHeader>
                   <div className="w-12 h-12 gradient-primary rounded-lg flex items-center justify-center mb-4">
@@ -326,12 +236,10 @@ const Portfolio = () => {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm">
+                    {service.features.map((feature, idx) => <li key={idx} className="flex items-center text-sm">
                         <Check className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                         {feature}
-                      </li>
-                    ))}
+                      </li>)}
                   </ul>
                   <Button className="w-full gradient-primary text-white" asChild>
                     <a href="#contact">
@@ -339,8 +247,7 @@ const Portfolio = () => {
                     </a>
                   </Button>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -363,29 +270,18 @@ const Portfolio = () => {
               <div className="sticky top-24">
                 <h3 className="text-xl font-semibold mb-4">Filter Projects</h3>
                 <div className="space-y-2">
-                  {portfolioCategories.map((category, index) => (
-                    <Button
-                      key={index}
-                      variant={index === 0 ? "default" : "outline"}
-                      className="w-full justify-start"
-                    >
+                  {portfolioCategories.map((category, index) => <Button key={index} variant={index === 0 ? "default" : "outline"} className="w-full justify-start">
                       {category}
-                    </Button>
-                  ))}
+                    </Button>)}
                 </div>
               </div>
             </div>
 
             {/* Portfolio Grid */}
             <div className="lg:col-span-3 grid md:grid-cols-2 gap-6">
-              {portfolioItems.map((item, index) => (
-                <Card key={index} className="overflow-hidden group hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay={index * 100}>
+              {portfolioItems.map((item, index) => <Card key={index} className="overflow-hidden group hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="relative overflow-hidden">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+                    <img src={item.image} alt={item.title} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" />
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-primary text-white">{item.category}</Badge>
                     </div>
@@ -402,8 +298,7 @@ const Portfolio = () => {
                       </Button>
                     </div>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </div>
         </div>
@@ -423,31 +318,23 @@ const Portfolio = () => {
 
           <Carousel className="max-w-6xl mx-auto" data-aos="fade-up">
             <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+              {testimonials.map((testimonial, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <Card className="h-full">
                     <CardContent className="p-6">
                       <div className="flex items-center mb-4">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name}
-                          className="w-12 h-12 rounded-full mr-4"
-                        />
+                        <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4" />
                         <div>
                           <h4 className="font-semibold">{testimonial.name}</h4>
                           <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                         </div>
                       </div>
                       <div className="flex mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        ))}
+                        {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
                       </div>
                       <p className="italic">"{testimonial.review}"</p>
                     </CardContent>
                   </Card>
-                </CarouselItem>
-              ))}
+                </CarouselItem>)}
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
@@ -468,8 +355,7 @@ const Portfolio = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="text-center" data-aos="fade-up" data-aos-delay={index * 100}>
+            {processSteps.map((step, index) => <div key={index} className="text-center" data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className="relative mb-6">
                   <div className="w-20 h-20 gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <step.icon className="h-10 w-10 text-white" />
@@ -480,8 +366,7 @@ const Portfolio = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                 <p className="text-muted-foreground">{step.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -604,41 +489,22 @@ const Portfolio = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">First Name *</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                        placeholder="Your first name"
-                        required
-                      />
+                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" placeholder="Your first name" required />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Last Name *</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                        placeholder="Your last name"
-                        required
-                      />
+                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" placeholder="Your last name" required />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Email Address *</label>
-                    <input 
-                      type="email" 
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                      placeholder="your@email.com"
-                      required
-                    />
+                    <input type="email" className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" placeholder="your@email.com" required />
                   </div>
                   
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Business/Company</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
-                      placeholder="Your business name"
-                    />
+                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" placeholder="Your business name" />
                   </div>
                   
                   <div className="space-y-2">
@@ -667,11 +533,7 @@ const Portfolio = () => {
                   
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Project Details *</label>
-                    <textarea 
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 min-h-[120px]"
-                      placeholder="Tell me about your business goals, current challenges, and what you're looking to achieve..."
-                      required
-                    ></textarea>
+                    <textarea className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 min-h-[120px]" placeholder="Tell me about your business goals, current challenges, and what you're looking to achieve..." required></textarea>
                   </div>
                   
                   <Button type="submit" className="w-full gradient-primary text-white font-bold text-lg py-6 rounded-xl">
@@ -696,44 +558,19 @@ const Portfolio = () => {
               Rehoman Alif
             </div>
             <div className="flex space-x-6">
-              <a 
-                href="https://www.fiverr.com/alifpixelpro" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="https://www.fiverr.com/alifpixelpro" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 Fiverr
               </a>
-              <a 
-                href="https://www.facebook.com/rehomanalifofficial" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="https://www.facebook.com/rehomanalifofficial" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.instagram.com/rehomanalif" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="https://www.instagram.com/rehomanalif" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.linkedin.com/rehomanalif" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="https://www.linkedin.com/rehomanalif" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.x.com/rehomanalifs" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="https://www.x.com/rehomanalifs" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
             </div>
@@ -745,8 +582,6 @@ const Portfolio = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Portfolio;
