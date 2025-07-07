@@ -210,7 +210,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-gradient">
-              PixelPro
+              Rehoman Alif
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#about" className="text-foreground hover:text-primary transition-colors">About</a>
@@ -231,20 +231,32 @@ const Portfolio = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-20 gradient-primary text-white overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Let's build Ads that <span className="text-yellow-300">Sell</span><br />
-              and Design that <span className="text-yellow-300">Convert</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-              I help ambitious businesses scale with high-converting Meta ads, 
-              stunning web design, and strategic digital marketing that drives real results.
-            </p>
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6" asChild>
-              <a href="https://www.fiverr.com/alifpixelpro" target="_blank" rel="noopener noreferrer">
-                Let's Scale Your Business <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8" data-aos="fade-right">
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                Let's build Ads that <span className="text-yellow-300">Sell</span><br />
+                and Design that <span className="text-yellow-300">Convert</span>
+              </h1>
+              <p className="text-xl md:text-2xl opacity-90 leading-relaxed">
+                I help ambitious businesses scale with high-converting Meta ads, 
+                stunning web design, and strategic digital marketing that drives real results.
+              </p>
+              <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6" asChild>
+                <a href="https://www.fiverr.com/alifpixelpro" target="_blank" rel="noopener noreferrer">
+                  Let's Scale Your Business <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+            <div className="relative" data-aos="fade-left">
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                 <img 
+                   src="/hero-image.png" 
+                   alt="Rehoman Alif - Digital Marketing Expert"
+                   className="w-full h-auto object-cover"
+                 />
+              </div>
+              <div className="absolute inset-0 gradient-accent rounded-3xl blur-2xl opacity-30 -z-10"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -322,7 +334,7 @@ const Portfolio = () => {
                     ))}
                   </ul>
                   <Button className="w-full gradient-primary text-white" asChild>
-                    <a href={service.link} target="_blank" rel="noopener noreferrer">
+                    <a href="#contact">
                       Get Started <ArrowRight className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
@@ -531,21 +543,147 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 gradient-primary text-white">
+      <section id="contact" className="py-20 bg-muted/20">
         <div className="container mx-auto px-6">
-          <div className="text-center" data-aos="fade-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               Ready to Scale Your Business?
             </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Let's discuss how I can help you achieve your digital marketing goals. 
-              Get in touch for a free consultation.
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Let's discuss how I can help you achieve your digital marketing goals.
             </p>
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6 mb-12" asChild>
-              <a href="https://www.fiverr.com/alifpixelpro" target="_blank" rel="noopener noreferrer">
-                Let's Talk Business <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* CTA Side */}
+            <div className="relative" data-aos="fade-right">
+              <div className="sticky top-24">
+                <Card className="p-8 gradient-primary text-white border-none shadow-2xl transform hover:scale-105 transition-all duration-300">
+                  <div className="text-center space-y-6">
+                    <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                      <Zap className="h-10 w-10 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-bold">Let's Scale Your Business</h3>
+                    <p className="text-lg opacity-90">
+                      Ready to see 3x ROI on your ad spend? Let's turn your marketing into a profit machine.
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-3">
+                        <Check className="h-5 w-5 text-yellow-300" />
+                        <span>Free Strategy Session</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Check className="h-5 w-5 text-yellow-300" />
+                        <span>Custom Action Plan</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Check className="h-5 w-5 text-yellow-300" />
+                        <span>30-Day Money Back Guarantee</span>
+                      </div>
+                    </div>
+                    <Button size="lg" className="bg-white text-primary hover:bg-gray-100 w-full font-bold text-lg py-6" asChild>
+                      <a href="https://www.fiverr.com/alifpixelpro" target="_blank" rel="noopener noreferrer">
+                        Start My Project <ArrowRight className="ml-2 h-5 w-5" />
+                      </a>
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div data-aos="fade-left">
+              <Card className="p-8 shadow-2xl border-2 border-primary/10 rounded-3xl bg-gradient-to-br from-background to-muted/20">
+                <CardHeader className="p-0 mb-6">
+                  <CardTitle className="text-2xl text-center">Get Your Free Consultation</CardTitle>
+                  <CardDescription className="text-center">
+                    Fill out the form below and I'll get back to you within 24 hours.
+                  </CardDescription>
+                </CardHeader>
+                <form className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">First Name *</label>
+                      <input 
+                        type="text" 
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                        placeholder="Your first name"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Last Name *</label>
+                      <input 
+                        type="text" 
+                        className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                        placeholder="Your last name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Email Address *</label>
+                    <input 
+                      type="email" 
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                      placeholder="your@email.com"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Business/Company</label>
+                    <input 
+                      type="text" 
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                      placeholder="Your business name"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Service Interested In *</label>
+                    <select className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" required>
+                      <option value="">Select a service</option>
+                      <option value="meta-ads">Meta Ads Expert</option>
+                      <option value="social-media">Social Media Marketing</option>
+                      <option value="web-design">Web Design</option>
+                      <option value="email-marketing">Email Marketing</option>
+                      <option value="ebook">eBook Writing & Design</option>
+                      <option value="multiple">Multiple Services</option>
+                    </select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Current Monthly Ad Spend</label>
+                    <select className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200">
+                      <option value="">Select range</option>
+                      <option value="0-1k">$0 - $1,000</option>
+                      <option value="1k-5k">$1,000 - $5,000</option>
+                      <option value="5k-10k">$5,000 - $10,000</option>
+                      <option value="10k+">$10,000+</option>
+                    </select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Project Details *</label>
+                    <textarea 
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 min-h-[120px]"
+                      placeholder="Tell me about your business goals, current challenges, and what you're looking to achieve..."
+                      required
+                    ></textarea>
+                  </div>
+                  
+                  <Button type="submit" className="w-full gradient-primary text-white font-bold text-lg py-6 rounded-xl">
+                    Send My Project Details <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  
+                  <p className="text-sm text-muted-foreground text-center">
+                    By submitting this form, you agree to receive communication from me about your project.
+                  </p>
+                </form>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -555,7 +693,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-2xl font-bold mb-4 md:mb-0 text-gradient">
-              PixelPro
+              Rehoman Alif
             </div>
             <div className="flex space-x-6">
               <a 
@@ -602,7 +740,7 @@ const Portfolio = () => {
           </div>
           <div className="text-center mt-8 pt-8 border-t border-muted-foreground/20">
             <p className="text-muted-foreground">
-              © 2024 PixelPro Digital Marketing. All rights reserved.
+              © 2024 Rehoman Alif Digital Marketing. All rights reserved.
             </p>
           </div>
         </div>
