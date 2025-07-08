@@ -161,15 +161,15 @@ const Portfolio = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-6 pt-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">500+</div>
+                  <div className="text-3xl font-bold text-primary">100+</div>
                   <div className="text-sm text-muted-foreground">Projects Completed</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-secondary">98%</div>
+                  <div className="text-3xl font-bold text-secondary">99%</div>
                   <div className="text-sm text-muted-foreground">Client Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-accent">5+</div>
+                  <div className="text-3xl font-bold text-accent">2+</div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>
                 </div>
               </div>
@@ -595,11 +595,11 @@ const Portfolio = () => {
                   
                   <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/20">
                     <div className="text-center">
-                      <div className="text-lg font-bold">500+</div>
+                      <div className="text-lg font-bold">100+</div>
                       <div className="text-xs text-white/80">Projects</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold">5.0★</div>
+                      <div className="text-lg font-bold">5.0 ★</div>
                       <div className="text-xs text-white/80">Rating</div>
                     </div>
                     <div className="text-center">
@@ -769,7 +769,7 @@ const Portfolio = () => {
                       <label className="block text-sm font-semibold text-foreground mb-3">
                         Project Details
                       </label>
-                      <Textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell me about your project, goals, and how I can help you succeed..." rows={6} className="bg-gray-50 border-0 rounded-xl text-foreground placeholder:text-muted-foreground focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none" required />
+                      <Textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell me about your project, goals, and how I can help you succeed..." rows={6} required className="bg-gray-50 border-0 rounded-xl text-foreground placeholder:text-muted-foreground focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all duration-300 resize-none border-2 " />
                     </div>
                     
                     <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-primary hover:opacity-90 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
