@@ -114,7 +114,8 @@ const Portfolio = () => {
             <div className="flex items-center space-x-4">
               <Button 
                 onClick={scrollToContact} 
-                className="hidden sm:flex bg-gradient-primary hover:opacity-90 text-white px-4 sm:px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                variant="gradient"
+                className="hidden sm:flex px-4 sm:px-6 py-2 rounded-full font-semibold"
               >
                 Let's Talk
               </Button>
@@ -167,14 +168,15 @@ const Portfolio = () => {
                 <Button 
                   onClick={scrollToContact}
                   size="lg" 
-                  className="bg-gradient-primary hover:opacity-90 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  variant="gradient"
+                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transform hover:scale-105"
                 >
                   Let's Scale Your Business
                 </Button>
                 <Button 
-                  variant="outline" 
+                  variant="gradient-outline" 
                   size="lg"
-                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full"
                   onClick={() => window.open('https://www.fiverr.com/alifpixelpro', '_blank')}
                 >
                   View My Work

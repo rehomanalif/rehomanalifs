@@ -71,7 +71,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen, scrollToCont
                       scrollToContact();
                       setIsOpen(false);
                     }}
-                    className="w-full bg-gradient-primary hover:opacity-90 text-white rounded-full font-semibold"
+                    variant="gradient"
+                    className="w-full rounded-full font-semibold"
                   >
                     Let's Talk
                   </Button>
