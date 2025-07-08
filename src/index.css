@@ -136,4 +136,32 @@ All colors MUST be HSL.
   .bg-gradient-primary {
     background: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-secondary)));
   }
+  
+  .animate-slide-down {
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-stagger-in {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: staggerIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes staggerIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
