@@ -61,7 +61,7 @@ const ContactForm = memo(({ contactRef }: ContactFormProps) => {
   };
 
   return (
-    <section ref={contactRef} id="contact" className="py-16 sm:py-20">
+    <section ref={contactRef} id="contact" className="py-20 sm:py-24 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">
@@ -73,70 +73,66 @@ const ContactForm = memo(({ contactRef }: ContactFormProps) => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {/* Contact Info */}
+          {/* Fiverr Contact Info */}
           <div data-aos="fade-right" className="space-y-6">
-            <Card className="p-6 sm:p-8 bg-gradient-to-br from-primary/5 to-secondary/5 border-0 shadow-lg">
+            <Card className="p-6 sm:p-8 bg-gradient-to-br from-[#1DBF73]/10 to-[#1DBF73]/5 border-0 shadow-lg">
               <div className="space-y-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Get in Touch</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Ready to take your business to the next level? I'd love to hear about your project 
-                    and discuss how we can achieve your goals together.
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-[#1DBF73] rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">f</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground">Connect on Fiverr</h3>
+                    <p className="text-[#1DBF73] font-semibold">Top Rated Seller</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-[#1DBF73] to-[#19A463] text-white p-6 rounded-xl">
+                  <h4 className="text-xl font-bold mb-2">🚀 Ready to Scale Your Business?</h4>
+                  <p className="text-white/90 leading-relaxed mb-4">
+                    Join 500+ satisfied clients who've achieved exceptional results with my proven strategies. 
+                    Let's discuss your project and create something amazing together!
                   </p>
+                  
+                  <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-white/10 rounded-lg">
+                    <div className="text-center">
+                      <div className="text-lg font-bold">5.0 ⭐</div>
+                      <div className="text-xs text-white/80">Rating</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold">500+</div>
+                      <div className="text-xs text-white/80">Projects</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold">1-2h</div>
+                      <div className="text-xs text-white/80">Response</div>
+                    </div>
+                  </div>
+
+                  <Button 
+                    onClick={() => window.open('https://www.fiverr.com/alifpixelpro', '_blank')} 
+                    className="w-full bg-white text-[#1DBF73] hover:bg-white/90 py-3 font-semibold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                  >
+                    Visit My Fiverr Profile
+                  </Button>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground">Email</div>
-                      <div className="text-muted-foreground">rehomanalif@gmail.com</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gradient-secondary rounded-lg flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground">Phone</div>
-                      <div className="text-muted-foreground">Available on request</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gradient-accent rounded-lg flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground">Location</div>
-                      <div className="text-muted-foreground">Bangladesh</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-border/20">
-                  <div className="text-sm font-semibold text-foreground mb-3">Follow me on social media</div>
-                  <div className="flex space-x-3">
-                    {[
-                      { icon: Facebook, href: "https://facebook.com/rehomanalif" },
-                      { icon: Instagram, href: "https://instagram.com/rehomanalif" },
-                      { icon: Linkedin, href: "https://linkedin.com/in/rehomanalif" },
-                      { icon: Twitter, href: "https://twitter.com/rehomanalif" }
-                    ].map((social, index) => (
-                      <a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 bg-muted hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-300"
-                      >
-                        <social.icon className="w-5 h-5" />
-                      </a>
-                    ))}
-                  </div>
+                <div className="space-y-3">
+                  <h4 className="font-bold text-foreground">🎯 What You Get:</h4>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-[#1DBF73] rounded-full mr-3"></div>
+                      Professional consultation & strategy
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-[#1DBF73] rounded-full mr-3"></div>
+                      Custom solutions for your business
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-[#1DBF73] rounded-full mr-3"></div>
+                      Guaranteed satisfaction & support
+                    </li>
+                  </ul>
                 </div>
               </div>
             </Card>

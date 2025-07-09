@@ -89,36 +89,36 @@ const Portfolio = () => {
       </Suspense>
 
       {/* About Section */}
-      <section id="about" className="py-16 sm:py-20 bg-gradient-to-br from-primary/5 to-secondary/5 parallax-bg">
+      <section id="about" className="mt-20 sm:mt-24 py-20 sm:py-24 lg:py-28 bg-gradient-to-br from-primary/5 to-secondary/5 parallax-bg">
         <div className="container mx-auto px-4 sm:px-6">
-          <ScrollAnimations animation="fadeUp" className="text-center mb-12 sm:mb-16">
+          <ScrollAnimations animation="fadeUp" className="text-center mb-16 sm:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Build Trust & Connection
             </h2>
           </ScrollAnimations>
 
-          <ScrollAnimations animation="stagger" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
-            {/* Values */}
+          <ScrollAnimations animation="stagger" className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-16 sm:mb-20">
+            {/* Values - Transform to compact badges */}
             {[{
             icon: TrendingUp,
-            title: "Growth",
+            title: "Growth Focused",
             gradient: "from-primary to-secondary"
           }, {
             icon: BarChart3,
-            title: "Performance",
+            title: "Performance Driven",
             gradient: "from-secondary to-accent"
           }, {
             icon: Target,
-            title: "Clarity",
+            title: "Goal Clarity",
             gradient: "from-accent to-primary"
-          }].map((value, index) => <Card key={index} className="text-center group hover:shadow-xl transition-all duration-500 border-0 shadow-lg hover:scale-105">
-                <CardContent className="p-6 sm:p-8">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${value.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <value.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
-                </CardContent>
-              </Card>)}
+          }].map((value, index) => (
+            <div key={index} className={`group flex items-center bg-gradient-to-r ${value.gradient} text-white px-4 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 floating-animation`}>
+              <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                <value.icon className="w-4 h-4 text-white" />
+              </div>
+              <span className="font-semibold text-sm">{value.title}</span>
+            </div>
+          ))}
           </ScrollAnimations>
 
           {/* Skills Overview */}
@@ -189,7 +189,7 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-16 sm:py-20">
+      <section id="portfolio" className="py-20 sm:py-24 lg:py-28">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">
@@ -320,7 +320,7 @@ const Portfolio = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 sm:py-20 bg-gradient-to-br from-secondary/5 to-accent/5">
+      <section id="testimonials" className="py-20 sm:py-24 lg:py-28 bg-gradient-to-br from-secondary/5 to-accent/5">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">
@@ -404,46 +404,52 @@ const Portfolio = () => {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="py-12 sm:py-16">
+      <section id="process" className="py-20 sm:py-24 lg:py-28">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12" data-aos="fade-up">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gradient">
+          <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">
               My Proven Process
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             {[{
             step: "01",
             icon: Lightbulb,
-            title: "Discovery & Goal Mapping"
+            title: "Discovery",
+            gradient: "from-primary to-secondary"
           }, {
             step: "02",
             icon: Palette,
-            title: "Strategy & Creative Setup"
+            title: "Strategy",
+            gradient: "from-secondary to-accent"
           }, {
             step: "03",
             icon: Rocket,
-            title: "Launch & Optimize"
+            title: "Launch",
+            gradient: "from-accent to-primary"
           }, {
             step: "04",
             icon: LineChart,
-            title: "Analyze & Scale"
-          }].map((process, index) => <Card key={index} className="relative text-center group hover:shadow-lg transition-all duration-300 border-0 shadow-md" data-aos="fade-up" data-aos-delay={index * 100}>
-                <CardContent className="p-4 sm:p-6">
-                  <div className="text-2xl font-black text-primary/20 mb-2">{process.step}</div>
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <process.icon className="w-5 h-5 text-white" />
-                  </div>
-                  <h3 className="text-sm sm:text-base font-bold text-foreground">{process.title}</h3>
-                </CardContent>
-              </Card>)}
+            title: "Scale",
+            gradient: "from-primary to-accent"
+          }].map((process, index) => (
+            <div key={index} className={`group relative bg-gradient-to-r ${process.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 floating-animation`} data-aos="fade-up" data-aos-delay={index * 100}>
+              <div className="flex items-center space-x-3">
+                <div className="text-lg font-black text-white/30">{process.step}</div>
+                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <process.icon className="w-4 h-4 text-white" />
+                </div>
+                <span className="font-semibold text-sm">{process.title}</span>
+              </div>
+            </div>
+          ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <section className="py-20 sm:py-24 lg:py-28 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">
@@ -530,7 +536,7 @@ const Portfolio = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 sm:py-20">
+      <section id="services" className="py-20 sm:py-24 lg:py-28">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">

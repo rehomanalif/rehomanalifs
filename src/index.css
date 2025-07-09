@@ -236,6 +236,17 @@ All colors MUST be HSL.
     transform: scale(0.8);
   }
   
+  /* Floating Animation for Badges */
+  .floating-animation {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(-5px) rotate(-1deg); }
+  }
+
   /* Optimize font loading */
   @font-face {
     font-family: 'Inter';
