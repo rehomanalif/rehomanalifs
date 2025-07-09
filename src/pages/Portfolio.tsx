@@ -5,9 +5,10 @@ import { Badge } from '@/components/ui/badge';
 import { Star, TrendingUp, BarChart3, Target, Users, MessageSquare, Monitor, MailIcon, Award, Heart, User, Lightbulb, Palette, Rocket, LineChart, ArrowRight, Play, Layers, PenTool, TrendingUp as TrendingUpIcon, Zap, Globe, Smartphone, Code } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { trackWebVitals, preloadCriticalResources } from '@/utils/performance';
+import ScrollAnimations from '@/components/ScrollAnimations';
 
 // Lazy load components for better performance
 const Navigation = lazy(() => import('@/components/Navigation'));
@@ -21,18 +22,12 @@ const Portfolio = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger);
+    
     // Initialize performance monitoring
     trackWebVitals();
     preloadCriticalResources();
-    
-    // Initialize AOS once with optimized settings
-    AOS.init({
-      duration: 800,
-      once: true,
-      disable: 'mobile', // Disable on mobile for better performance
-      offset: 50,
-      easing: 'ease-out-cubic'
-    });
 
     // Initialize EmailJS asynchronously
     if (typeof window !== 'undefined') {
@@ -40,6 +35,38 @@ const Portfolio = () => {
         emailjs.default.init('dYEaCIqvts-TKYeXF');
       });
     }
+
+    // GSAP scroll animations for sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+      gsap.fromTo(section,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    // Parallax effect for backgrounds
+    gsap.to(".parallax-bg", {
+      yPercent: -50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".parallax-bg",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
   }, []);
 
   const scrollToContact = () => {
@@ -62,15 +89,15 @@ const Portfolio = () => {
       </Suspense>
 
       {/* About Section */}
-      <section id="about" className="py-16 sm:py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <section id="about" className="py-16 sm:py-20 bg-gradient-to-br from-primary/5 to-secondary/5 parallax-bg">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+          <ScrollAnimations animation="fadeUp" className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Build Trust & Connection
             </h2>
-          </div>
+          </ScrollAnimations>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
+          <ScrollAnimations animation="stagger" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
             {/* Values */}
             {[{
             icon: TrendingUp,
@@ -84,7 +111,7 @@ const Portfolio = () => {
             icon: Target,
             title: "Clarity",
             gradient: "from-accent to-primary"
-          }].map((value, index) => <Card key={index} className="text-center group hover:shadow-xl transition-all duration-300 border-0 shadow-lg" data-aos="fade-up" data-aos-delay={index * 100}>
+          }].map((value, index) => <Card key={index} className="text-center group hover:shadow-xl transition-all duration-500 border-0 shadow-lg hover:scale-105">
                 <CardContent className="p-6 sm:p-8">
                   <div className={`w-16 h-16 bg-gradient-to-br ${value.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                     <value.icon className="w-8 h-8 text-white" />
@@ -92,11 +119,11 @@ const Portfolio = () => {
                   <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
                 </CardContent>
               </Card>)}
-          </div>
+          </ScrollAnimations>
 
           {/* Skills Overview */}
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div data-aos="fade-right">
+            <ScrollAnimations animation="fadeRight">
               <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">Main Services & Skills</h3>
               <div className="space-y-6">
                 {[{
@@ -115,21 +142,24 @@ const Portfolio = () => {
                 skill: "Email Marketing",
                 percentage: 88,
                 color: "from-primary to-accent"
-              }].map((item, index) => <div key={index} className="space-y-3">
+              }].map((item, index) => (
+                  <div key={index} className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-foreground">{item.skill}</span>
                       <span className="text-primary font-bold text-lg">{item.percentage}%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
-                      <div className={`bg-gradient-to-r ${item.color} h-3 rounded-full transition-all duration-1000 ease-out shadow-lg`} style={{
-                    width: `${item.percentage}%`
-                  }}></div>
+                      <div 
+                        className={`bg-gradient-to-r ${item.color} h-3 rounded-full transition-all duration-1000 ease-out shadow-lg`} 
+                        style={{ width: `${item.percentage}%` }}
+                      />
                     </div>
-                  </div>)}
+                  </div>
+                ))}
               </div>
-            </div>
+            </ScrollAnimations>
 
-            <div data-aos="fade-left" className="space-y-6">
+            <ScrollAnimations animation="fadeLeft" className="space-y-6">
               <Card className="p-6 bg-gradient-to-br from-primary/10 to-secondary/10 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
@@ -153,7 +183,7 @@ const Portfolio = () => {
                   </div>
                 </div>
               </Card>
-            </div>
+            </ScrollAnimations>
           </div>
         </div>
       </section>
@@ -256,7 +286,9 @@ const Portfolio = () => {
                 result: '1000+ Sales',
                 metrics: ['1000+ Sales', '42% Open Rate', '$125K Revenue'],
                 image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500'
-              }].filter(project => project.category === portfolioFilter).map((project, index) => <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-lg" data-aos="fade-up" data-aos-delay={index * 100}>
+              }].filter(project => project.category === portfolioFilter).map((project, index) => (
+                <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-lg"
+                >
                     <div className="relative overflow-hidden">
                       <img src={project.image} alt={project.title} className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-300" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -269,14 +301,18 @@ const Portfolio = () => {
                       <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
                       <div className="space-y-2">
                         <h4 className="text-xs font-semibold text-foreground uppercase tracking-wide">Key Metrics</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.metrics.map((metric, idx) => <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary">
-                              {metric}
-                            </Badge>)}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>)}
+                         <div className="flex flex-wrap gap-2">
+                           {project.metrics.map((metric, idx) => (
+                             <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary">
+                               {metric}
+                             </Badge>
+                           ))}
+                         </div>
+                       </div>
+                     </CardContent>
+                   </Card>
+                 )
+              )}
               </div>
             </div>
           </div>

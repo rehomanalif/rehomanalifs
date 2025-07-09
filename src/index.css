@@ -190,6 +190,52 @@ All colors MUST be HSL.
     }
   }
   
+  /* GSAP Performance Optimizations */
+  .gsap-animate {
+    will-change: transform, opacity;
+  }
+  
+  .gsap-animate.completed {
+    will-change: auto;
+  }
+  
+  /* Magnetic Button Effects */
+  .magnetic-button {
+    transform-style: preserve-3d;
+  }
+  
+  /* Parallax Elements */
+  .parallax-element {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Scroll Trigger Optimizations */
+  .scroll-triggered {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  /* Custom GSAP Animations */
+  .gsap-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .gsap-fade-left {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  
+  .gsap-fade-right {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  
+  .gsap-scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
   /* Optimize font loading */
   @font-face {
     font-family: 'Inter';
