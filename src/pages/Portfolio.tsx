@@ -477,7 +477,7 @@ const Portfolio = () => {
                     </div>
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold">Ready to Get Started?</h3>
-                      <p className="text-white/90">Join 500+ satisfied clients</p>
+                      <p className="text-white/90">Join 100+ satisfied clients</p>
                     </div>
                   </div>
                   
