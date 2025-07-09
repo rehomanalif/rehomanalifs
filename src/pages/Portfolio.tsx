@@ -17,12 +17,10 @@ const Navigation = lazy(() => import('@/components/Navigation'));
 const HeroSection = lazy(() => import('@/components/HeroSection'));
 const LazyImage = lazy(() => import('@/components/LazyImage'));
 const ContactForm = lazy(() => import('@/components/ContactForm'));
-
 const Portfolio = () => {
   const contactRef = useRef<HTMLDivElement>(null);
   const [portfolioFilter, setPortfolioFilter] = useState('Social Media Marketing');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   useEffect(() => {
     // Initialize AOS
     AOS.init({
@@ -34,14 +32,14 @@ const Portfolio = () => {
 
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
-    
+
     // Initialize performance monitoring
     trackWebVitals();
     preloadCriticalResources();
 
     // Initialize EmailJS asynchronously
     if (typeof window !== 'undefined') {
-      import('@emailjs/browser').then((emailjs) => {
+      import('@emailjs/browser').then(emailjs => {
         emailjs.default.init('dYEaCIqvts-TKYeXF');
       });
     }
@@ -49,20 +47,20 @@ const Portfolio = () => {
     // GSAP scroll animations for sections
     const sections = document.querySelectorAll('section');
     sections.forEach((section, index) => {
-      gsap.fromTo(section,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
+      gsap.fromTo(section, {
+        opacity: 0,
+        y: 50
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
         }
-      );
+      });
     });
 
     // Parallax effect for backgrounds
@@ -76,22 +74,15 @@ const Portfolio = () => {
         scrub: true
       }
     });
-
   }, []);
-
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({
       behavior: 'smooth'
     });
   };
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Suspense fallback={<div className="fixed top-0 left-0 right-0 h-16 bg-white/95 backdrop-blur-sm border-b shadow-sm z-50" />}>
-        <Navigation 
-          isMobileMenuOpen={isMobileMenuOpen} 
-          setIsMobileMenuOpen={setIsMobileMenuOpen} 
-          scrollToContact={scrollToContact} 
-        />
+        <Navigation isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} scrollToContact={scrollToContact} />
       </Suspense>
 
       <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-white via-primary/5 to-secondary/5" />}>
@@ -133,13 +124,7 @@ const Portfolio = () => {
             icon: Monitor,
             title: "Tech Savvy",
             gradient: "from-accent to-secondary"
-          }].map((value, index) => (
-            <div 
-              key={index} 
-              className={`group relative bg-gradient-to-r ${value.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-2 floating-animation cursor-pointer transform-gpu`}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
+          }].map((value, index) => <div key={index} className={`group relative bg-gradient-to-r ${value.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-2 floating-animation cursor-pointer transform-gpu`} data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                   <value.icon className="w-4 h-4 text-white" />
@@ -147,8 +132,7 @@ const Portfolio = () => {
                 <span className="font-semibold text-sm">{value.title}</span>
               </div>
               <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-xl transition-all duration-300"></div>
-            </div>
-          ))}
+            </div>)}
           </div>
 
           {/* Skills Overview */}
@@ -172,20 +156,17 @@ const Portfolio = () => {
                 skill: "Email Marketing",
                 percentage: 88,
                 color: "from-primary to-accent"
-              }].map((item, index) => (
-                  <div key={index} className="space-y-3">
+              }].map((item, index) => <div key={index} className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-foreground">{item.skill}</span>
                       <span className="text-primary font-bold text-lg">{item.percentage}%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
-                      <div 
-                        className={`bg-gradient-to-r ${item.color} h-3 rounded-full transition-all duration-1000 ease-out shadow-lg`} 
-                        style={{ width: `${item.percentage}%` }}
-                      />
+                      <div className={`bg-gradient-to-r ${item.color} h-3 rounded-full transition-all duration-1000 ease-out shadow-lg`} style={{
+                    width: `${item.percentage}%`
+                  }} />
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
 
@@ -316,13 +297,7 @@ const Portfolio = () => {
                 result: '1000+ Sales',
                 metrics: ['1000+ Sales', '42% Open Rate', '$125K Revenue'],
                 image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500'
-              }].filter(project => project.category === portfolioFilter).map((project, index) => (
-                <Card 
-                  key={index} 
-                  className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
+              }].filter(project => project.category === portfolioFilter).map((project, index) => <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay={index * 100}>
                     <div className="relative overflow-hidden">
                       <img src={project.image} alt={project.title} className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-300" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -336,17 +311,13 @@ const Portfolio = () => {
                       <div className="space-y-2">
                         <h4 className="text-xs font-semibold text-foreground uppercase tracking-wide">Key Metrics</h4>
                          <div className="flex flex-wrap gap-2">
-                           {project.metrics.map((metric, idx) => (
-                             <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary">
+                           {project.metrics.map((metric, idx) => <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary">
                                {metric}
-                             </Badge>
-                           ))}
+                             </Badge>)}
                          </div>
                        </div>
                      </CardContent>
-                   </Card>
-                 )
-              )}
+                   </Card>)}
               </div>
             </div>
           </div>
@@ -371,7 +342,7 @@ const Portfolio = () => {
         }} className="max-w-7xl mx-auto" data-aos="fade-up" data-aos-delay="200">
             <CarouselContent className="-ml-2 sm:-ml-4">
                {[{
-               name: "Sarah Johnson",
+              name: "Sarah Johnson",
               role: "E-commerce Owner",
               content: "Rehoman transformed our Meta ads performance. ROAS increased 340% in 2 months!",
               rating: 5,
@@ -467,13 +438,7 @@ const Portfolio = () => {
             icon: LineChart,
             title: "Scale",
             gradient: "from-primary to-accent"
-          }].map((process, index) => (
-            <div 
-              key={index} 
-              className={`group relative bg-gradient-to-r ${process.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 floating-animation cursor-pointer transform-gpu overflow-hidden`} 
-              data-aos="fade-up" 
-              data-aos-delay={index * 100}
-            >
+          }].map((process, index) => <div key={index} className={`group relative bg-gradient-to-r ${process.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 floating-animation cursor-pointer transform-gpu overflow-hidden`} data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="flex items-center space-x-3 relative z-10">
                 <div className="text-lg font-black text-white/30 group-hover:text-white/50 transition-colors duration-300">{process.step}</div>
                 <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
@@ -483,8 +448,7 @@ const Portfolio = () => {
               </div>
               <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300"></div>
               <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-            </div>
-          ))}
+            </div>)}
           </div>
         </div>
       </section>
@@ -536,7 +500,7 @@ const Portfolio = () => {
                       <div className="text-xs text-white/80">Rating</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold">24h</div>
+                      <div className="text-lg font-bold">1-2h</div>
                       <div className="text-xs text-white/80">Response</div>
                     </div>
                   </div>
@@ -607,12 +571,7 @@ const Portfolio = () => {
             description: "Stunning websites built on Framer, WordPress, and Wix that convert visitors into customers.",
             features: ["Custom design systems", "Mobile-first approach", "SEO optimization", "Speed optimization", "Conversion-focused design"],
             gradient: "from-accent to-primary"
-            }].map((service, index) => <Card 
-              key={index} 
-              className="relative overflow-hidden group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105 hover:rotate-1 cursor-pointer transform-gpu" 
-              data-aos="fade-up" 
-              data-aos-delay={index * 100}
-            >
+          }].map((service, index) => <Card key={index} className="relative overflow-hidden group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105 hover:rotate-1 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 <div className="p-6 relative z-10">
                   <div className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`}>
@@ -621,14 +580,12 @@ const Portfolio = () => {
                   <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{service.title}</h3>
                   <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
                   <ul className="space-y-2 mb-6">
-                     {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm">
+                     {service.features.map((feature, idx) => <li key={idx} className="flex items-center text-sm">
                           <div className="h-4 w-4 bg-gradient-to-br from-primary to-secondary rounded-full mr-2 flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <div className="w-2 h-2 bg-white rounded-full" />
                           </div>
                           <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature}</span>
-                        </li>
-                      ))}
+                        </li>)}
                    </ul>
                    <Button onClick={scrollToContact} className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
                      Get Started
@@ -667,61 +624,61 @@ const Portfolio = () => {
               </p>
               
                <div className="flex space-x-4 pt-4">
-                {[
-                  { icon: Facebook, href: 'https://www.facebook.com/rehomanalifofficial' },
-                  { icon: Instagram, href: 'https://www.instagram.com/rehomanalif' },
-                  { icon: Linkedin, href: 'https://www.linkedin.com/rehomanalif' },
-                  { icon: Twitter, href: 'https://www.x.com/rehomanalifs' }
-                ].map((social, index) => (
-                  <a 
-                    key={index}
-                    href={social.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="group w-12 h-12 bg-slate-700 hover:bg-gradient-primary rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                  >
+                {[{
+                icon: Facebook,
+                href: 'https://www.facebook.com/rehomanalifofficial'
+              }, {
+                icon: Instagram,
+                href: 'https://www.instagram.com/rehomanalif'
+              }, {
+                icon: Linkedin,
+                href: 'https://www.linkedin.com/rehomanalif'
+              }, {
+                icon: Twitter,
+                href: 'https://www.x.com/rehomanalifs'
+              }].map((social, index) => <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className="group w-12 h-12 bg-slate-700 hover:bg-gradient-primary rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110" data-aos="fade-up" data-aos-delay={index * 100}>
                     <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
-                  </a>
-                ))}
+                  </a>)}
               </div>
             </div>
             
             <div className="space-y-6" data-aos="fade-up">
               <h4 className="text-xl font-bold text-white">Services</h4>
               <ul className="space-y-3">
-                {['Meta Ads Management', 'Social Media Marketing', 'Web Design & Development', 'Email Marketing', 'eBook Writing & Design'].map((service, index) => (
-                  <li key={index}>
+                {['Meta Ads Management', 'Social Media Marketing', 'Web Design & Development', 'Email Marketing', 'eBook Writing & Design'].map((service, index) => <li key={index}>
                     <a href="#services" className="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2 group">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full group-hover:bg-white transition-colors"></div>
                       <span>{service}</span>
                     </a>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
             
             <div className="space-y-6" data-aos="fade-up" data-aos-delay="200">
               <h4 className="text-xl font-bold text-white">Quick Links</h4>
               <ul className="space-y-3">
-                {[
-                  { name: 'About Me', href: '#about' },
-                  { name: 'Portfolio', href: '#portfolio' },
-                  { name: 'Contact', href: '#contact' },
-                  { name: 'Fiverr Profile', href: 'https://www.fiverr.com/alifpixelpro', external: true }
-                ].map((link, index) => (
-                  <li key={index}>
-                    <a 
-                      href={link.href} 
-                      {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} 
-                      className="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2 group"
-                    >
+                {[{
+                name: 'About Me',
+                href: '#about'
+              }, {
+                name: 'Portfolio',
+                href: '#portfolio'
+              }, {
+                name: 'Contact',
+                href: '#contact'
+              }, {
+                name: 'Fiverr Profile',
+                href: 'https://www.fiverr.com/alifpixelpro',
+                external: true
+              }].map((link, index) => <li key={index}>
+                    <a href={link.href} {...link.external ? {
+                  target: '_blank',
+                  rel: 'noopener noreferrer'
+                } : {}} className="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2 group">
                       <div className="w-1.5 h-1.5 bg-secondary rounded-full group-hover:bg-white transition-colors"></div>
                       <span>{link.name}</span>
                     </a>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
           </div>
@@ -741,8 +698,6 @@ const Portfolio = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Portfolio;
