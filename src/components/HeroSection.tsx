@@ -4,12 +4,12 @@ import { CheckCircle, Star } from 'lucide-react';
 import heroImage from '@/assets/hero-image.png';
 import { gsap } from 'gsap';
 import { animations } from '@/hooks/useGSAP';
-
 interface HeroSectionProps {
   scrollToContact: () => void;
 }
-
-const HeroSection = memo(({ scrollToContact }: HeroSectionProps) => {
+const HeroSection = memo(({
+  scrollToContact
+}: HeroSectionProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const floatingRef1 = useRef<HTMLDivElement>(null);
@@ -18,61 +18,85 @@ const HeroSection = memo(({ scrollToContact }: HeroSectionProps) => {
   const textRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Main timeline for hero entrance
       const tl = gsap.timeline();
-      
+
       // Background elements animation
       if (floatingRef1.current && floatingRef2.current && floatingRef3.current) {
-        tl.fromTo([floatingRef1.current, floatingRef2.current, floatingRef3.current], 
-          { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)" }
-        );
+        tl.fromTo([floatingRef1.current, floatingRef2.current, floatingRef3.current], {
+          scale: 0,
+          opacity: 0
+        }, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "back.out(1.7)"
+        });
       }
-      
+
       // Text content reveal
       if (textRef.current) {
-        tl.fromTo(textRef.current.children,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" },
-          "-=0.4"
-        );
+        tl.fromTo(textRef.current.children, {
+          y: 50,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out"
+        }, "-=0.4");
       }
-      
+
       // Image container with clip-path reveal
       if (imageRef.current) {
-        tl.fromTo(imageRef.current,
-          { clipPath: "circle(0% at 50% 50%)", scale: 0.8 },
-          { clipPath: "circle(100% at 50% 50%)", scale: 1, duration: 1.2, ease: "power2.out" },
-          "-=0.6"
-        );
+        tl.fromTo(imageRef.current, {
+          clipPath: "circle(0% at 50% 50%)",
+          scale: 0.8
+        }, {
+          clipPath: "circle(100% at 50% 50%)",
+          scale: 1,
+          duration: 1.2,
+          ease: "power2.out"
+        }, "-=0.6");
       }
-      
+
       // Buttons entrance
       if (buttonsRef.current) {
-        tl.fromTo(buttonsRef.current.children,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
-          "-=0.4"
-        );
+        tl.fromTo(buttonsRef.current.children, {
+          y: 30,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out"
+        }, "-=0.4");
       }
-      
+
       // Stats animation
       if (statsRef.current) {
-        tl.fromTo(statsRef.current.children,
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
-          "-=0.2"
-        );
+        tl.fromTo(statsRef.current.children, {
+          y: 20,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out"
+        }, "-=0.2");
       }
-      
+
       // Floating animations for badges
       animations.floatingAnimation(".floating-badge-1");
       animations.floatingAnimation(".floating-badge-2");
       animations.floatingAnimation(".floating-badge-3");
-      
+
       // Continuous floating for background elements
       gsap.to(floatingRef1.current, {
         y: -20,
@@ -81,7 +105,6 @@ const HeroSection = memo(({ scrollToContact }: HeroSectionProps) => {
         yoyo: true,
         repeat: -1
       });
-      
       gsap.to(floatingRef2.current, {
         y: 15,
         duration: 2.5,
@@ -90,14 +113,10 @@ const HeroSection = memo(({ scrollToContact }: HeroSectionProps) => {
         repeat: -1,
         delay: 0.5
       });
-      
     }, heroRef);
-    
     return () => ctx.revert();
   }, []);
-
-  return (
-    <section ref={heroRef} id="home" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-white via-primary/5 to-secondary/5 relative overflow-hidden">
+  return <section ref={heroRef} id="home" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-white via-primary/5 to-secondary/5 relative overflow-hidden">
       {/* Background Elements */}
       <div ref={floatingRef1} className="absolute top-20 right-10 w-12 sm:w-20 h-12 sm:h-20 rounded-full bg-primary/20"></div>
       <div ref={floatingRef2} className="absolute bottom-32 left-10 w-10 sm:w-16 h-10 sm:h-16 rounded-full bg-secondary/20"></div>
@@ -147,7 +166,7 @@ const HeroSection = memo(({ scrollToContact }: HeroSectionProps) => {
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-secondary">99%</div>
+                <div className="text-3xl font-bold text-secondary">100%</div>
                 <div className="text-sm text-muted-foreground">Client Satisfaction</div>
               </div>
               <div className="text-center">
@@ -162,12 +181,7 @@ const HeroSection = memo(({ scrollToContact }: HeroSectionProps) => {
             <div className="relative">
               {/* Main Image Container - Optimized sizing */}
               <div ref={imageRef} className="relative z-10 bg-gradient-to-br from-white to-gray-50 rounded-3xl p-4 shadow-2xl max-w-md mx-auto">
-                <img 
-                  src={heroImage} 
-                  alt="Rehoman Alif - Digital Marketing Expert" 
-                  className="w-full rounded-2xl"
-                  loading="eager"
-                />
+                <img src={heroImage} alt="Rehoman Alif - Digital Marketing Expert" className="w-full rounded-2xl" loading="eager" />
                 
                 {/* Floating Elements with GSAP classes */}
                 <div className="floating-badge-1 absolute -top-3 -right-3 bg-green-500 text-white p-2.5 rounded-full shadow-lg">
@@ -196,10 +210,7 @@ const HeroSection = memo(({ scrollToContact }: HeroSectionProps) => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 });
-
 HeroSection.displayName = 'HeroSection';
-
 export default HeroSection;
