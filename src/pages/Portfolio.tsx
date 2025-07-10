@@ -696,7 +696,7 @@ const Portfolio = () => {
                       <span>{service.stats.value}</span>
                     </div>
                     <div className="text-xs text-muted-foreground text-center mt-1">{service.stats.label}</div>
-                    <div className="bg-white/10 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs font-semibold mt-2 text-center border border-white/20">
+                    <div className="backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs font-semibold mt-2 text-center border border-white/20 bg-gray-800">
                       {service.pricing}
                     </div>
                   </div>
