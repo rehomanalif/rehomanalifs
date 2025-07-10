@@ -99,7 +99,7 @@ const Portfolio = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
-            {/* Values - Enhanced with 3D hover effects */}
+            {/* Values - Enhanced with clean hover effects */}
             {[{
             icon: TrendingUp,
             title: "Growth Focused",
@@ -124,15 +124,15 @@ const Portfolio = () => {
             icon: Monitor,
             title: "Tech Savvy",
             gradient: "from-accent to-secondary"
-          }].map((value, index) => <div key={index} className={`group relative bg-gradient-to-r ${value.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-110 hover:-translate-y-2 hover:rotate-3 floating-animation cursor-pointer transform-gpu border border-white/20 hover:border-white/40`} data-aos="fade-up" data-aos-delay={index * 100}>
+          }].map((value, index) => <div key={index} className={`group relative bg-gradient-to-r ${value.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-110 hover:-translate-y-2 floating-animation cursor-pointer transform-gpu border border-white/20 hover:border-white/40`} data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
                   <value.icon className="w-4 h-4 text-white" />
                 </div>
                 <span className="font-semibold text-sm">{value.title}</span>
               </div>
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-xl transition-all duration-500 group-hover:backdrop-blur-sm"></div>
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur"></div>
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-xl transition-all duration-500"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-white/30 to-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
             </div>)}
           </div>
 
@@ -193,45 +193,42 @@ const Portfolio = () => {
               </div>
             </div>
 
-            {/* Right Side - Interactive Service Cards */}
-            <div className="space-y-6" data-aos="fade-left">
+            {/* Right Side - Compact Interactive Service Cards */}
+            <div className="space-y-4" data-aos="fade-left">
               {[{
               icon: Award,
-              title: "5-Star Rated Professional",
-              description: "Maintaining a perfect 5-star rating on Fiverr with 500+ completed projects and satisfied clients worldwide.",
+              title: "5-Star Professional",
+              description: "500+ projects, perfect rating",
               gradient: "from-primary to-secondary",
-              stats: ["500+ Projects", "5-Star Rating", "Global Reach"]
+              stats: "500+ Projects"
             }, {
               icon: Heart,
-              title: "Client-Focused Approach",
-              description: "Every project is treated with care and attention to detail, ensuring results that exceed expectations.",
+              title: "Client-Focused",
+              description: "100% satisfaction guaranteed",
               gradient: "from-secondary to-accent",
-              stats: ["100% Satisfaction", "24/7 Support", "Quick Delivery"]
+              stats: "100% Satisfaction"
             }, {
               icon: Zap,
-              title: "Results That Matter",
-              description: "Proven strategies that drive real business growth and measurable ROI for every client.",
+              title: "Results-Driven",
+              description: "300% average growth achieved",
               gradient: "from-accent to-primary",
-              stats: ["300% Avg Growth", "Fast Results", "ROI Focused"]
-            }].map((card, index) => <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                  <CardContent className="relative p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${card.gradient} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                        <card.icon className="w-6 h-6 text-white" />
+              stats: "300% Growth"
+            }].map((card, index) => <Card key={index} className="group relative overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 bg-card/50 backdrop-blur-sm">
+                  <CardContent className="relative p-4">
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-10 h-10 bg-gradient-to-br ${card.gradient} rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-all duration-300`}>
+                        <card.icon className="w-5 h-5 text-white" />
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{card.title}</h4>
-                        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{card.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {card.stats.map((stat, idx) => <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300">
-                              {stat}
-                            </Badge>)}
-                        </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-base text-foreground mb-1 group-hover:text-primary transition-colors duration-300">{card.title}</h4>
+                        <p className="text-muted-foreground text-xs mb-2 line-clamp-1">{card.description}</p>
+                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-primary/20 text-primary">
+                          {card.stats}
+                        </Badge>
                       </div>
                     </div>
                   </CardContent>
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </Card>)}
             </div>
           </div>
@@ -239,7 +236,7 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-16 sm:py-20 lg:py-24">
+      <section id="portfolio" className="py-8 sm:py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">
@@ -645,7 +642,8 @@ const Portfolio = () => {
               value: "340%",
               label: "Avg ROAS",
               icon: TrendingUpIcon
-            }
+            },
+            pricing: "Starting from $150"
           }, {
             icon: MessageSquare,
             title: "Social Media Marketing",
@@ -656,7 +654,8 @@ const Portfolio = () => {
               value: "2.5M",
               label: "Reach",
               icon: Globe
-            }
+            },
+            pricing: "Starting from $100"
           }, {
             icon: Monitor,
             title: "Web Design",
@@ -667,7 +666,8 @@ const Portfolio = () => {
               value: "250%",
               label: "Conversions",
               icon: Zap
-            }
+            },
+            pricing: "Starting from $200"
           }].map((service, index) => <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-4 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
               {/* Animated Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-500`}></div>
@@ -689,13 +689,16 @@ const Portfolio = () => {
                     <service.icon className="h-7 w-7 text-white" />
                   </div>
                   
-                  {/* Stats Badge */}
+                 {/* Pricing Badge */}
                   <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
                     <div className={`bg-gradient-to-r ${service.gradient} text-white px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1`}>
                       <service.stats.icon className="w-3 h-3" />
                       <span>{service.stats.value}</span>
                     </div>
                     <div className="text-xs text-muted-foreground text-center mt-1">{service.stats.label}</div>
+                    <div className="bg-white/10 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs font-semibold mt-2 text-center border border-white/20">
+                      {service.pricing}
+                    </div>
                   </div>
                 </div>
                 

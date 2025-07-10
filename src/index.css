@@ -128,9 +128,10 @@ All colors MUST be HSL.
   }
   
   .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
   
   .bg-gradient-primary {
@@ -332,18 +333,68 @@ All colors MUST be HSL.
     src: local('Inter');
   }
 
+  /* Smooth Navigation Scroll Progress */
+  .nav-scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.1s ease-out;
+    z-index: 1000;
+  }
+
+  /* Enhanced Mobile Menu Animation */
+  .mobile-menu-enter {
+    animation: mobileMenuSlideIn 0.3s ease-out forwards;
+  }
+
+  .mobile-menu-exit {
+    animation: mobileMenuSlideOut 0.3s ease-out forwards;
+  }
+
+  @keyframes mobileMenuSlideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes mobileMenuSlideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .floating-animation,
     .bounce,
     .pulse,
     .text-reveal,
     .stagger-animation > *,
-    .particle-float {
+    .particle-float,
+    .mobile-menu-enter,
+    .mobile-menu-exit {
       animation: none !important;
     }
     
     .transform-gpu {
       will-change: auto;
+    }
+    
+    .nav-scroll-progress {
+      transition: none;
     }
   }
 }
