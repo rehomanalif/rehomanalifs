@@ -147,49 +147,38 @@ const Portfolio = () => {
               
               <div className="grid grid-cols-2 gap-6">
                 {[{
-                  skill: "Meta Ads Management",
-                  percentage: 98,
-                  color: "stroke-primary",
-                  bgColor: "from-primary/10 to-primary/5",
-                  icon: Target
-                }, {
-                  skill: "Social Media Marketing",
-                  percentage: 95,
-                  color: "stroke-secondary",
-                  bgColor: "from-secondary/10 to-secondary/5",
-                  icon: MessageSquare
-                }, {
-                  skill: "Web Design & Development",
-                  percentage: 92,
-                  color: "stroke-accent",
-                  bgColor: "from-accent/10 to-accent/5",
-                  icon: Monitor
-                }, {
-                  skill: "Email Marketing",
-                  percentage: 88,
-                  color: "stroke-primary",
-                  bgColor: "from-primary/10 to-accent/5",
-                  icon: MailIcon
-                }].map((item, index) => (
-                  <div key={index} className={`group relative p-6 rounded-2xl bg-gradient-to-br ${item.bgColor} border border-border/50 hover:border-border transition-all duration-500 hover:scale-105 hover:shadow-xl`}>
+                skill: "Meta Ads Management",
+                percentage: 98,
+                color: "stroke-primary",
+                bgColor: "from-primary/10 to-primary/5",
+                icon: Target
+              }, {
+                skill: "Social Media Marketing",
+                percentage: 95,
+                color: "stroke-secondary",
+                bgColor: "from-secondary/10 to-secondary/5",
+                icon: MessageSquare
+              }, {
+                skill: "Web Design & Development",
+                percentage: 92,
+                color: "stroke-accent",
+                bgColor: "from-accent/10 to-accent/5",
+                icon: Monitor
+              }, {
+                skill: "Email Marketing",
+                percentage: 88,
+                color: "stroke-primary",
+                bgColor: "from-primary/10 to-accent/5",
+                icon: MailIcon
+              }].map((item, index) => <div key={index} className={`group relative p-6 rounded-2xl bg-gradient-to-br ${item.bgColor} border border-border/50 hover:border-border transition-all duration-500 hover:scale-105 hover:shadow-xl`}>
                     <div className="text-center">
                       <div className="relative w-20 h-20 mx-auto mb-4">
                         <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 100 100">
                           <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="10" fill="none" className="text-muted/20" />
-                          <circle 
-                            cx="50" 
-                            cy="50" 
-                            r="45" 
-                            stroke="currentColor" 
-                            strokeWidth="10" 
-                            fill="none" 
-                            strokeLinecap="round"
-                            className={`${item.color} transition-all duration-1000 ease-out`}
-                            style={{
-                              strokeDasharray: `${2 * Math.PI * 45}`,
-                              strokeDashoffset: `${2 * Math.PI * 45 * (1 - item.percentage / 100)}`
-                            }}
-                          />
+                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="10" fill="none" strokeLinecap="round" className={`${item.color} transition-all duration-1000 ease-out`} style={{
+                        strokeDasharray: `${2 * Math.PI * 45}`,
+                        strokeDashoffset: `${2 * Math.PI * 45 * (1 - item.percentage / 100)}`
+                      }} />
                         </svg>
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
@@ -200,33 +189,31 @@ const Portfolio = () => {
                       </div>
                       <h4 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors duration-300">{item.skill}</h4>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
 
             {/* Right Side - Interactive Service Cards */}
             <div className="space-y-6" data-aos="fade-left">
               {[{
-                icon: Award,
-                title: "5-Star Rated Professional",
-                description: "Maintaining a perfect 5-star rating on Fiverr with 500+ completed projects and satisfied clients worldwide.",
-                gradient: "from-primary to-secondary",
-                stats: ["500+ Projects", "5-Star Rating", "Global Reach"]
-              }, {
-                icon: Heart,
-                title: "Client-Focused Approach",
-                description: "Every project is treated with care and attention to detail, ensuring results that exceed expectations.",
-                gradient: "from-secondary to-accent",
-                stats: ["100% Satisfaction", "24/7 Support", "Quick Delivery"]
-              }, {
-                icon: Zap,
-                title: "Results That Matter",
-                description: "Proven strategies that drive real business growth and measurable ROI for every client.",
-                gradient: "from-accent to-primary",
-                stats: ["300% Avg Growth", "Fast Results", "ROI Focused"]
-              }].map((card, index) => (
-                <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+              icon: Award,
+              title: "5-Star Rated Professional",
+              description: "Maintaining a perfect 5-star rating on Fiverr with 500+ completed projects and satisfied clients worldwide.",
+              gradient: "from-primary to-secondary",
+              stats: ["500+ Projects", "5-Star Rating", "Global Reach"]
+            }, {
+              icon: Heart,
+              title: "Client-Focused Approach",
+              description: "Every project is treated with care and attention to detail, ensuring results that exceed expectations.",
+              gradient: "from-secondary to-accent",
+              stats: ["100% Satisfaction", "24/7 Support", "Quick Delivery"]
+            }, {
+              icon: Zap,
+              title: "Results That Matter",
+              description: "Proven strategies that drive real business growth and measurable ROI for every client.",
+              gradient: "from-accent to-primary",
+              stats: ["300% Avg Growth", "Fast Results", "ROI Focused"]
+            }].map((card, index) => <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
                   <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                   <CardContent className="relative p-6">
                     <div className="flex items-start space-x-4">
@@ -237,18 +224,15 @@ const Portfolio = () => {
                         <h4 className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{card.title}</h4>
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{card.description}</p>
                         <div className="flex flex-wrap gap-2">
-                          {card.stats.map((stat, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                          {card.stats.map((stat, idx) => <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300">
                               {stat}
-                            </Badge>
-                          ))}
+                            </Badge>)}
                         </div>
                       </div>
                     </div>
                   </CardContent>
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </div>
         </div>
@@ -501,8 +485,7 @@ const Portfolio = () => {
             description: "Continuously optimize and scale successful campaigns for maximum ROI and growth.",
             gradient: "from-primary to-accent",
             features: ["Performance tracking", "Optimization", "Growth scaling"]
-          }].map((process, index) => (
-            <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
+          }].map((process, index) => <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${process.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
               
@@ -532,12 +515,10 @@ const Portfolio = () => {
                 
                 {/* Features */}
                 <div className="space-y-2">
-                  {process.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center justify-center text-xs">
+                  {process.features.map((feature, idx) => <div key={idx} className="flex items-center justify-center text-xs">
                       <div className={`w-2 h-2 bg-gradient-to-r ${process.gradient} rounded-full mr-2 group-hover:scale-125 transition-transform duration-300`}></div>
                       <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </CardContent>
               
@@ -549,8 +530,7 @@ const Portfolio = () => {
                 <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-ping"></div>
                 <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-white rounded-full animate-ping animation-delay-200"></div>
               </div>
-            </Card>
-          ))}
+            </Card>)}
           </div>
         </div>
       </section>
@@ -661,23 +641,34 @@ const Portfolio = () => {
             description: "High-converting Facebook & Instagram ads that drive real results and maximize your ROI.",
             features: ["Advanced audience targeting", "Creative optimization", "Conversion tracking", "A/B testing strategies", "Budget optimization"],
             gradient: "from-primary to-secondary",
-            stats: { value: "340%", label: "Avg ROAS", icon: TrendingUpIcon }
+            stats: {
+              value: "340%",
+              label: "Avg ROAS",
+              icon: TrendingUpIcon
+            }
           }, {
             icon: MessageSquare,
             title: "Social Media Marketing",
             description: "Complete social media strategy and management to build your brand and engage your audience.",
             features: ["Content strategy & creation", "Community management", "Brand storytelling", "Influencer partnerships", "Analytics & reporting"],
             gradient: "from-secondary to-accent",
-            stats: { value: "2.5M", label: "Reach", icon: Globe }
+            stats: {
+              value: "2.5M",
+              label: "Reach",
+              icon: Globe
+            }
           }, {
             icon: Monitor,
             title: "Web Design",
             description: "Stunning websites built on Framer, WordPress, and Wix that convert visitors into customers.",
             features: ["Custom design systems", "Mobile-first approach", "SEO optimization", "Speed optimization", "Conversion-focused design"],
             gradient: "from-accent to-primary",
-            stats: { value: "250%", label: "Conversions", icon: Zap }
-          }].map((service, index) => (
-            <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-4 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
+            stats: {
+              value: "250%",
+              label: "Conversions",
+              icon: Zap
+            }
+          }].map((service, index) => <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-4 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
               {/* Animated Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-500`}></div>
               
@@ -720,19 +711,16 @@ const Portfolio = () => {
                 
                 {/* Features List */}
                 <ul className="space-y-3 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm opacity-80 group-hover:opacity-100 transition-all duration-300" style={{transitionDelay: `${idx * 50}ms`}}>
+                  {service.features.map((feature, idx) => <li key={idx} className="flex items-center text-sm opacity-80 group-hover:opacity-100 transition-all duration-300" style={{
+                  transitionDelay: `${idx * 50}ms`
+                }}>
                       <div className={`h-2 w-2 bg-gradient-to-r ${service.gradient} rounded-full mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300`}></div>
-                      <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature}</span>
-                    </li>
-                  ))}
+                      <span className="transition-colors duration-300 text-slate-900">{feature}</span>
+                    </li>)}
                 </ul>
                 
                 {/* CTA Button */}
-                <Button 
-                  onClick={scrollToContact} 
-                  className={`w-full bg-gradient-to-r ${service.gradient} hover:shadow-xl text-white font-semibold py-3 rounded-xl transition-all duration-500 transform hover:scale-105 group-hover:shadow-2xl relative overflow-hidden`}
-                >
+                <Button onClick={scrollToContact} className={`w-full bg-gradient-to-r ${service.gradient} hover:shadow-xl text-white font-semibold py-3 rounded-xl transition-all duration-500 transform hover:scale-105 group-hover:shadow-2xl relative overflow-hidden`}>
                   <span className="relative z-10">Get Started</span>
                   <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 </Button>
@@ -743,8 +731,7 @@ const Portfolio = () => {
               
               {/* 3D Hover Effect */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-            </Card>
-          ))}
+            </Card>)}
           </div>
         </div>
       </section>
@@ -776,36 +763,25 @@ const Portfolio = () => {
               
                <div className="flex space-x-4 pt-4">
                 {[{
-                  icon: Facebook,
-                  href: 'https://www.facebook.com/rehomanalifofficial',
-                  name: 'Facebook'
-                }, {
-                  icon: Instagram,
-                  href: 'https://www.instagram.com/rehomanalif',
-                  name: 'Instagram'
-                }, {
-                  icon: Linkedin,
-                  href: 'https://www.linkedin.com/rehomanalif',
-                  name: 'LinkedIn'
-                }, {
-                  icon: Twitter,
-                  href: 'https://www.x.com/rehomanalifs',
-                  name: 'Twitter'
-                }].map((social, index) => (
-                  <a 
-                    key={index} 
-                    href={social.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="group relative w-12 h-12 bg-slate-700/50 hover:bg-gradient-primary rounded-xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 border border-slate-600 hover:border-white/20" 
-                    data-aos="fade-up" 
-                    data-aos-delay={index * 100}
-                    title={social.name}
-                  >
+                icon: Facebook,
+                href: 'https://www.facebook.com/rehomanalifofficial',
+                name: 'Facebook'
+              }, {
+                icon: Instagram,
+                href: 'https://www.instagram.com/rehomanalif',
+                name: 'Instagram'
+              }, {
+                icon: Linkedin,
+                href: 'https://www.linkedin.com/rehomanalif',
+                name: 'LinkedIn'
+              }, {
+                icon: Twitter,
+                href: 'https://www.x.com/rehomanalifs',
+                name: 'Twitter'
+              }].map((social, index) => <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className="group relative w-12 h-12 bg-slate-700/50 hover:bg-gradient-primary rounded-xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 border border-slate-600 hover:border-white/20" data-aos="fade-up" data-aos-delay={index * 100} title={social.name}>
                     <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></div>
-                  </a>
-                ))}
+                  </a>)}
               </div>
             </div>
             
