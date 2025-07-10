@@ -247,10 +247,103 @@ All colors MUST be HSL.
     66% { transform: translateY(-5px) rotate(-1deg); }
   }
 
+  /* Enhanced Animation Delays */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Advanced 3D Transform Effects */
+  .transform-gpu {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+
+  /* Particle Animation Effects */
+  @keyframes float-particle {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.8;
+    }
+  }
+
+  .particle-float {
+    animation: float-particle 3s ease-in-out infinite;
+  }
+
+  /* Text Reveal Animation */
+  @keyframes text-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .text-reveal {
+    animation: text-reveal 0.8s ease-out forwards;
+  }
+
+  /* Stagger Animation for Lists */
+  .stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: text-reveal 0.6s ease-out forwards;
+  }
+
+  .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Performance optimizations */
+  .lazy-loading {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .lazy-loading.loaded {
+    opacity: 1;
+  }
+
   /* Optimize font loading */
   @font-face {
     font-family: 'Inter';
     font-display: swap;
     src: local('Inter');
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-animation,
+    .bounce,
+    .pulse,
+    .text-reveal,
+    .stagger-animation > *,
+    .particle-float {
+      animation: none !important;
+    }
+    
+    .transform-gpu {
+      will-change: auto;
+    }
   }
 }

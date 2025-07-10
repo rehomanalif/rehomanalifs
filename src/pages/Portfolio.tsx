@@ -90,16 +90,16 @@ const Portfolio = () => {
       </Suspense>
 
       {/* About Section */}
-      <section id="about" className="mt-20 sm:mt-24 py-20 sm:py-24 lg:py-28 bg-gradient-to-br from-primary/5 to-secondary/5 parallax-bg">
+      <section id="about" className="mt-20 sm:mt-24 py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-primary/5 to-secondary/5 parallax-bg">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16 sm:mb-20" data-aos="fade-up">
+          <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Build Trust & Connection
             </h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-16 sm:mb-20">
-            {/* Values - Transform to compact badges */}
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
+            {/* Values - Enhanced with 3D hover effects */}
             {[{
             icon: TrendingUp,
             title: "Growth Focused",
@@ -124,83 +124,138 @@ const Portfolio = () => {
             icon: Monitor,
             title: "Tech Savvy",
             gradient: "from-accent to-secondary"
-          }].map((value, index) => <div key={index} className={`group relative bg-gradient-to-r ${value.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-2 floating-animation cursor-pointer transform-gpu`} data-aos="fade-up" data-aos-delay={index * 100}>
+          }].map((value, index) => <div key={index} className={`group relative bg-gradient-to-r ${value.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-110 hover:-translate-y-2 hover:rotate-3 floating-animation cursor-pointer transform-gpu border border-white/20 hover:border-white/40`} data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
                   <value.icon className="w-4 h-4 text-white" />
                 </div>
                 <span className="font-semibold text-sm">{value.title}</span>
               </div>
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-xl transition-all duration-300"></div>
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-xl transition-all duration-500 group-hover:backdrop-blur-sm"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur"></div>
             </div>)}
           </div>
 
-          {/* Skills Overview */}
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div data-aos="fade-right">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">Main Services & Skills</h3>
-              <div className="space-y-6">
+          {/* Main Services & Skills - Modern Redesign */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left Side - Circular Progress Indicators */}
+            <div data-aos="fade-right" className="space-y-8">
+              <div className="text-center lg:text-left">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">Main Services & Skills</h3>
+                <p className="text-muted-foreground mb-8">Expertise across multiple digital marketing disciplines with proven track records.</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6">
                 {[{
-                skill: "Meta Ads Management",
-                percentage: 98,
-                color: "from-primary to-secondary"
-              }, {
-                skill: "Social Media Marketing",
-                percentage: 95,
-                color: "from-secondary to-accent"
-              }, {
-                skill: "Web Design & Development",
-                percentage: 92,
-                color: "from-accent to-primary"
-              }, {
-                skill: "Email Marketing",
-                percentage: 88,
-                color: "from-primary to-accent"
-              }].map((item, index) => <div key={index} className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="font-semibold text-foreground">{item.skill}</span>
-                      <span className="text-primary font-bold text-lg">{item.percentage}%</span>
+                  skill: "Meta Ads Management",
+                  percentage: 98,
+                  color: "stroke-primary",
+                  bgColor: "from-primary/10 to-primary/5",
+                  icon: Target
+                }, {
+                  skill: "Social Media Marketing",
+                  percentage: 95,
+                  color: "stroke-secondary",
+                  bgColor: "from-secondary/10 to-secondary/5",
+                  icon: MessageSquare
+                }, {
+                  skill: "Web Design & Development",
+                  percentage: 92,
+                  color: "stroke-accent",
+                  bgColor: "from-accent/10 to-accent/5",
+                  icon: Monitor
+                }, {
+                  skill: "Email Marketing",
+                  percentage: 88,
+                  color: "stroke-primary",
+                  bgColor: "from-primary/10 to-accent/5",
+                  icon: MailIcon
+                }].map((item, index) => (
+                  <div key={index} className={`group relative p-6 rounded-2xl bg-gradient-to-br ${item.bgColor} border border-border/50 hover:border-border transition-all duration-500 hover:scale-105 hover:shadow-xl`}>
+                    <div className="text-center">
+                      <div className="relative w-20 h-20 mx-auto mb-4">
+                        <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 100 100">
+                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="10" fill="none" className="text-muted/20" />
+                          <circle 
+                            cx="50" 
+                            cy="50" 
+                            r="45" 
+                            stroke="currentColor" 
+                            strokeWidth="10" 
+                            fill="none" 
+                            strokeLinecap="round"
+                            className={`${item.color} transition-all duration-1000 ease-out`}
+                            style={{
+                              strokeDasharray: `${2 * Math.PI * 45}`,
+                              strokeDashoffset: `${2 * Math.PI * 45 * (1 - item.percentage / 100)}`
+                            }}
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center">
+                            <item.icon className="w-6 h-6 mx-auto mb-1 text-foreground group-hover:scale-110 transition-transform duration-300" />
+                            <span className="text-lg font-bold text-foreground">{item.percentage}%</span>
+                          </div>
+                        </div>
+                      </div>
+                      <h4 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors duration-300">{item.skill}</h4>
                     </div>
-                    <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
-                      <div className={`bg-gradient-to-r ${item.color} h-3 rounded-full transition-all duration-1000 ease-out shadow-lg`} style={{
-                    width: `${item.percentage}%`
-                  }} />
-                    </div>
-                  </div>)}
+                  </div>
+                ))}
               </div>
             </div>
 
+            {/* Right Side - Interactive Service Cards */}
             <div className="space-y-6" data-aos="fade-left">
-              <Card className="p-6 bg-gradient-to-br from-primary/10 to-secondary/10 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-foreground mb-2">5-Star Rated Professional</h4>
-                    <p className="text-muted-foreground">Maintaining a perfect 5-star rating on Fiverr with 500+ completed projects and satisfied clients worldwide.</p>
-                  </div>
-                </div>
-              </Card>
-              
-              <Card className="p-6 bg-gradient-to-br from-secondary/10 to-accent/10 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Heart className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-foreground mb-2">Client-Focused Approach</h4>
-                    <p className="text-muted-foreground">Every project is treated with care and attention to detail, ensuring results that exceed expectations.</p>
-                  </div>
-                </div>
-              </Card>
+              {[{
+                icon: Award,
+                title: "5-Star Rated Professional",
+                description: "Maintaining a perfect 5-star rating on Fiverr with 500+ completed projects and satisfied clients worldwide.",
+                gradient: "from-primary to-secondary",
+                stats: ["500+ Projects", "5-Star Rating", "Global Reach"]
+              }, {
+                icon: Heart,
+                title: "Client-Focused Approach",
+                description: "Every project is treated with care and attention to detail, ensuring results that exceed expectations.",
+                gradient: "from-secondary to-accent",
+                stats: ["100% Satisfaction", "24/7 Support", "Quick Delivery"]
+              }, {
+                icon: Zap,
+                title: "Results That Matter",
+                description: "Proven strategies that drive real business growth and measurable ROI for every client.",
+                gradient: "from-accent to-primary",
+                stats: ["300% Avg Growth", "Fast Results", "ROI Focused"]
+              }].map((card, index) => (
+                <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                  <CardContent className="relative p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className={`w-12 h-12 bg-gradient-to-br ${card.gradient} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                        <card.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{card.title}</h4>
+                        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{card.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {card.stats.map((stat, idx) => (
+                            <Badge key={idx} variant="outline" className="text-xs px-2 py-1 border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                              {stat}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-12 sm:py-16 lg:py-20">
+      <section id="portfolio" className="py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gradient">
@@ -417,38 +472,85 @@ const Portfolio = () => {
             </h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[{
             step: "01",
             icon: Lightbulb,
             title: "Discovery",
-            gradient: "from-primary to-secondary"
+            description: "Deep dive into your business, goals, and target audience to create a solid foundation.",
+            gradient: "from-primary to-secondary",
+            features: ["Business analysis", "Competitor research", "Goal setting"]
           }, {
             step: "02",
             icon: Palette,
             title: "Strategy",
-            gradient: "from-secondary to-accent"
+            description: "Develop a comprehensive strategy tailored to your specific needs and objectives.",
+            gradient: "from-secondary to-accent",
+            features: ["Campaign planning", "Creative strategy", "Budget allocation"]
           }, {
             step: "03",
             icon: Rocket,
             title: "Launch",
-            gradient: "from-accent to-primary"
+            description: "Execute the strategy with precision, monitoring every detail for optimal performance.",
+            gradient: "from-accent to-primary",
+            features: ["Campaign setup", "Creative deployment", "Initial optimization"]
           }, {
             step: "04",
             icon: LineChart,
             title: "Scale",
-            gradient: "from-primary to-accent"
-          }].map((process, index) => <div key={index} className={`group relative bg-gradient-to-r ${process.gradient} text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 floating-animation cursor-pointer transform-gpu overflow-hidden`} data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="flex items-center space-x-3 relative z-10">
-                <div className="text-lg font-black text-white/30 group-hover:text-white/50 transition-colors duration-300">{process.step}</div>
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                  <process.icon className="w-4 h-4 text-white" />
+            description: "Continuously optimize and scale successful campaigns for maximum ROI and growth.",
+            gradient: "from-primary to-accent",
+            features: ["Performance tracking", "Optimization", "Growth scaling"]
+          }].map((process, index) => (
+            <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
+              {/* Background Gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${process.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              
+              {/* Animated Border */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+              
+              <CardContent className="relative p-6 text-center">
+                {/* Step Number */}
+                <div className="absolute top-4 right-4 text-6xl font-black text-muted/10 group-hover:text-primary/20 transition-colors duration-500">
+                  {process.step}
                 </div>
-                <span className="font-semibold text-sm">{process.title}</span>
+                
+                {/* Icon */}
+                <div className={`w-16 h-16 bg-gradient-to-br ${process.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
+                  <process.icon className="w-8 h-8 text-white" />
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                  {process.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-muted-foreground text-sm mb-4 leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                  {process.description}
+                </p>
+                
+                {/* Features */}
+                <div className="space-y-2">
+                  {process.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center justify-center text-xs">
+                      <div className={`w-2 h-2 bg-gradient-to-r ${process.gradient} rounded-full mr-2 group-hover:scale-125 transition-transform duration-300`}></div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+              
+              {/* Hover Line Effect */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              
+              {/* Particle Effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-ping"></div>
+                <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-white rounded-full animate-ping animation-delay-200"></div>
               </div>
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300"></div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-            </div>)}
+            </Card>
+          ))}
           </div>
         </div>
       </section>
@@ -552,48 +654,97 @@ const Portfolio = () => {
             </p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[{
             icon: Target,
             title: "Meta Ads Expert",
             description: "High-converting Facebook & Instagram ads that drive real results and maximize your ROI.",
             features: ["Advanced audience targeting", "Creative optimization", "Conversion tracking", "A/B testing strategies", "Budget optimization"],
-            gradient: "from-primary to-secondary"
+            gradient: "from-primary to-secondary",
+            stats: { value: "340%", label: "Avg ROAS", icon: TrendingUpIcon }
           }, {
             icon: MessageSquare,
             title: "Social Media Marketing",
             description: "Complete social media strategy and management to build your brand and engage your audience.",
             features: ["Content strategy & creation", "Community management", "Brand storytelling", "Influencer partnerships", "Analytics & reporting"],
-            gradient: "from-secondary to-accent"
+            gradient: "from-secondary to-accent",
+            stats: { value: "2.5M", label: "Reach", icon: Globe }
           }, {
             icon: Monitor,
             title: "Web Design",
             description: "Stunning websites built on Framer, WordPress, and Wix that convert visitors into customers.",
             features: ["Custom design systems", "Mobile-first approach", "SEO optimization", "Speed optimization", "Conversion-focused design"],
-            gradient: "from-accent to-primary"
-          }].map((service, index) => <Card key={index} className="relative overflow-hidden group hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105 hover:rotate-1 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                <div className="p-6 relative z-10">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`}>
-                    <service.icon className="h-6 w-6 text-white" />
+            gradient: "from-accent to-primary",
+            stats: { value: "250%", label: "Conversions", icon: Zap }
+          }].map((service, index) => (
+            <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-4 cursor-pointer transform-gpu" data-aos="fade-up" data-aos-delay={index * 100}>
+              {/* Animated Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-15 transition-opacity duration-500`}></div>
+              
+              {/* Floating Particles */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-bounce animation-delay-100"></div>
+                <div className="absolute top-3/4 right-1/3 w-1 h-1 bg-secondary/40 rounded-full animate-ping animation-delay-300"></div>
+                <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-accent/30 rounded-full animate-pulse animation-delay-500"></div>
+              </div>
+              
+              {/* Border Glow Effect */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl blur-sm"></div>
+              
+              <CardContent className="relative p-6 z-10">
+                {/* Header with Icon and Stats */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
+                    <service.icon className="h-7 w-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{service.title}</h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
-                  <ul className="space-y-2 mb-6">
-                     {service.features.map((feature, idx) => <li key={idx} className="flex items-center text-sm">
-                          <div className="h-4 w-4 bg-gradient-to-br from-primary to-secondary rounded-full mr-2 flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                            <div className="w-2 h-2 bg-white rounded-full" />
-                          </div>
-                          <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature}</span>
-                        </li>)}
-                   </ul>
-                   <Button onClick={scrollToContact} className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
-                     Get Started
-                   </Button>
+                  
+                  {/* Stats Badge */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    <div className={`bg-gradient-to-r ${service.gradient} text-white px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1`}>
+                      <service.stats.icon className="w-3 h-3" />
+                      <span>{service.stats.value}</span>
+                    </div>
+                    <div className="text-xs text-muted-foreground text-center mt-1">{service.stats.label}</div>
+                  </div>
                 </div>
-                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-all duration-300"></div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-              </Card>)}
+                
+                {/* Title */}
+                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                  {service.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-muted-foreground mb-6 leading-relaxed text-sm group-hover:text-foreground/80 transition-colors duration-300">
+                  {service.description}
+                </p>
+                
+                {/* Features List */}
+                <ul className="space-y-3 mb-6">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-sm opacity-80 group-hover:opacity-100 transition-all duration-300" style={{transitionDelay: `${idx * 50}ms`}}>
+                      <div className={`h-2 w-2 bg-gradient-to-r ${service.gradient} rounded-full mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300`}></div>
+                      <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                {/* CTA Button */}
+                <Button 
+                  onClick={scrollToContact} 
+                  className={`w-full bg-gradient-to-r ${service.gradient} hover:shadow-xl text-white font-semibold py-3 rounded-xl transition-all duration-500 transform hover:scale-105 group-hover:shadow-2xl relative overflow-hidden`}
+                >
+                  <span className="relative z-10">Get Started</span>
+                  <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                </Button>
+              </CardContent>
+              
+              {/* Bottom Glow Line */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              
+              {/* 3D Hover Effect */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+            </Card>
+          ))}
           </div>
         </div>
       </section>
@@ -625,20 +776,36 @@ const Portfolio = () => {
               
                <div className="flex space-x-4 pt-4">
                 {[{
-                icon: Facebook,
-                href: 'https://www.facebook.com/rehomanalifofficial'
-              }, {
-                icon: Instagram,
-                href: 'https://www.instagram.com/rehomanalif'
-              }, {
-                icon: Linkedin,
-                href: 'https://www.linkedin.com/rehomanalif'
-              }, {
-                icon: Twitter,
-                href: 'https://www.x.com/rehomanalifs'
-              }].map((social, index) => <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className="group w-12 h-12 bg-slate-700 hover:bg-gradient-primary rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110" data-aos="fade-up" data-aos-delay={index * 100}>
-                    <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
-                  </a>)}
+                  icon: Facebook,
+                  href: 'https://www.facebook.com/rehomanalifofficial',
+                  name: 'Facebook'
+                }, {
+                  icon: Instagram,
+                  href: 'https://www.instagram.com/rehomanalif',
+                  name: 'Instagram'
+                }, {
+                  icon: Linkedin,
+                  href: 'https://www.linkedin.com/rehomanalif',
+                  name: 'LinkedIn'
+                }, {
+                  icon: Twitter,
+                  href: 'https://www.x.com/rehomanalifs',
+                  name: 'Twitter'
+                }].map((social, index) => (
+                  <a 
+                    key={index} 
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group relative w-12 h-12 bg-slate-700/50 hover:bg-gradient-primary rounded-xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 border border-slate-600 hover:border-white/20" 
+                    data-aos="fade-up" 
+                    data-aos-delay={index * 100}
+                    title={social.name}
+                  >
+                    <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></div>
+                  </a>
+                ))}
               </div>
             </div>
             
