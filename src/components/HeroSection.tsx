@@ -134,19 +134,15 @@ const HeroSection = memo(({
             
             <div className="space-y-4 sm:space-y-6">
               <h1 className="text-3xl sm:text-5xl font-black leading-tight lg:text-5xl">
-                Let's build{' '}
+                Turning Ad Spend Into Profit{' '}
                 <span className="text-gradient bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Ads that Sell
-                </span>{' '}
-                and{' '}
-                <span className="text-gradient bg-gradient-to-r from-accent via-primary to-secondary bg-clip-text text-transparent">
-                  Design that Convert
+                  340% Avg ROAS
                 </span>
               </h1>
               
-              <p className="text-lg leading-relaxed max-w-lg sm:text-xl font-medium text-gray-600 text-justify">
-                I help businesses scale with strategic digital marketing, high-converting Meta ads, 
-                and stunning web designs that actually drive results.
+              <p className="text-lg leading-relaxed max-w-lg sm:text-xl font-medium text-gray-600">
+                Strategic Meta Ads + Conversion-Focused Design = Real Business Growth. 
+                100+ clients scaled, 5-star rated, results-driven performance marketing.
               </p>
             </div>
             

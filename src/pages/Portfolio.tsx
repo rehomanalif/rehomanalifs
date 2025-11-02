@@ -12,14 +12,15 @@ import ScrollAnimations from '@/components/ScrollAnimations';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// Lazy load components for better performance
-const Navigation = lazy(() => import('@/components/Navigation'));
-const HeroSection = lazy(() => import('@/components/HeroSection'));
+// Phase 3: Remove lazy loading from critical above-the-fold components
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+// Keep lazy loading for below-the-fold components
 const LazyImage = lazy(() => import('@/components/LazyImage'));
-const ContactForm = lazy(() => import('@/components/ContactForm'));
+const ContactForm = lazy(() => import('@/components/ContactFormEnhanced'));
 const Portfolio = () => {
   const contactRef = useRef<HTMLDivElement>(null);
-  const [portfolioFilter, setPortfolioFilter] = useState('Social Media Marketing');
+  const [portfolioFilter, setPortfolioFilter] = useState('All');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   useEffect(() => {
     // Initialize AOS
@@ -81,13 +82,9 @@ const Portfolio = () => {
     });
   };
   return <div className="min-h-screen bg-background">
-      <Suspense fallback={<div className="fixed top-0 left-0 right-0 h-16 bg-white/95 backdrop-blur-sm border-b shadow-sm z-50" />}>
-        <Navigation isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} scrollToContact={scrollToContact} />
-      </Suspense>
-
-      <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-white via-primary/5 to-secondary/5" />}>
-        <HeroSection scrollToContact={scrollToContact} />
-      </Suspense>
+      {/* Phase 3: No Suspense for critical components */}
+      <Navigation isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} scrollToContact={scrollToContact} />
+      <HeroSection scrollToContact={scrollToContact} />
 
       {/* About Section */}
       <section id="about" className="mt-20 sm:mt-24 py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-primary/5 to-secondary/5 parallax-bg">
@@ -223,7 +220,7 @@ const Portfolio = () => {
                         <h4 className="font-bold text-base text-foreground mb-1 group-hover:text-primary transition-colors duration-300">{card.title}</h4>
                         <p className="text-muted-foreground text-xs mb-2 line-clamp-1">{card.description}</p>
                         <Badge variant="outline" className="text-xs px-2 py-0.5 border-primary/20 text-primary">
-                          100+ Projects
+                          {card.stats}
                         </Badge>
                       </div>
                     </div>
@@ -253,24 +250,38 @@ const Portfolio = () => {
             <div className="lg:sticky lg:top-24 lg:h-fit space-y-4" data-aos="fade-right">
               <h3 className="text-xl font-bold text-foreground mb-6">Categories</h3>
               {[{
+              key: 'All',
+              icon: Layers,
+              label: 'All Projects',
+              count: 8
+            }, {
               key: 'Social Media Marketing',
               icon: MessageSquare,
-              label: 'Social Media Marketing'
+              label: 'Social Media Marketing',
+              count: 2
             }, {
               key: 'Meta Ad Campaigns',
               icon: Target,
-              label: 'Meta Ad Campaigns'
+              label: 'Meta Ad Campaigns',
+              count: 2
             }, {
               key: 'Web Design',
               icon: Monitor,
-              label: 'Web Design'
+              label: 'Web Design',
+              count: 2
             }, {
               key: 'Email Marketing',
               icon: MailIcon,
-              label: 'Email Marketing'
-            }].map(category => <Button key={category.key} onClick={() => setPortfolioFilter(category.key)} variant="ghost" className={`w-full justify-start p-4 h-auto transition-all duration-300 ${portfolioFilter === category.key ? 'bg-gradient-primary text-white shadow-lg' : 'hover:bg-primary/5 hover:text-primary border border-border'}`}>
-                  <category.icon className="w-5 h-5 mr-3" />
-                  <span className="font-medium">{category.label}</span>
+              label: 'Email Marketing',
+              count: 2
+            }].map(category => <Button key={category.key} onClick={() => setPortfolioFilter(category.key)} variant="ghost" className={`w-full justify-between p-4 h-auto transition-all duration-300 ${portfolioFilter === category.key ? 'bg-gradient-primary text-white shadow-lg' : 'hover:bg-primary/5 hover:text-primary border border-border'}`}>
+                  <div className="flex items-center">
+                    <category.icon className="w-5 h-5 mr-3" />
+                    <span className="font-medium">{category.label}</span>
+                  </div>
+                  <span className={`text-xs ${portfolioFilter === category.key ? 'text-white/80' : 'text-muted-foreground'}`}>
+                    {category.count}
+                  </span>
                 </Button>)}
             </div>
 
@@ -333,7 +344,7 @@ const Portfolio = () => {
                 result: '1000+ Sales',
                 metrics: ['1000+ Sales', '42% Open Rate', '$125K Revenue'],
                 image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500'
-              }].filter(project => project.category === portfolioFilter).map((project, index) => <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay={index * 100}>
+              }].filter(project => portfolioFilter === 'All' || project.category === portfolioFilter).map((project, index) => <Card key={index} className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay={index * 100}>
                     <div className="relative overflow-hidden">
                       <img src={project.image} alt={project.title} className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-300" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
