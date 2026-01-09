@@ -1,6 +1,5 @@
-import React from 'react';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -8,86 +7,66 @@ interface MobileMenuProps {
   scrollToContact: () => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsOpen, scrollToContact }) => {
-  const handleLinkClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsOpen(false);
-  };
+const menuItems = [
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#services", label: "Services" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#testimonials", label: "Reviews" },
+  { href: "#contact", label: "Contact" }
+];
+
+const MobileMenu = ({ isOpen, setIsOpen, scrollToContact }: MobileMenuProps) => {
+  const handleLinkClick = () => setIsOpen(false);
 
   return (
     <>
-      {/* Mobile Menu Button */}
-      <Button
-        variant="ghost"
-        size="sm"
-        className="md:hidden"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </Button>
+      <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-full glass-card hover:neon-glow-cyan transition-all duration-300" aria-label="Toggle menu">
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+              <X className="w-5 h-5 text-primary" />
+            </motion.div>
+          ) : (
+            <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+              <Menu className="w-5 h-5 text-foreground" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </button>
 
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div 
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" 
-            onClick={() => setIsOpen(false)} 
-          />
-          <div className="fixed top-0 left-0 w-full bg-gradient-to-b from-white via-white to-white/95 shadow-2xl animate-slide-down">
-            <div className="px-6 py-8">
-              <div className="flex justify-between items-center mb-8">
-                <span className="text-xl font-bold text-foreground">Menu</span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsOpen(false)}
-                  className="hover:bg-primary/10"
-                >
-                  <X className="w-6 h-6" />
-                </Button>
-              </div>
-              
-              <nav className="space-y-2">
-                {[
-                  { href: '#home', label: 'Home' },
-                  { href: '#about', label: 'About' },
-                  { href: '#services', label: 'Services' },
-                  { href: '#portfolio', label: 'Portfolio' },
-                  { href: '#testimonials', label: 'Reviews' },
-                  { href: '#process', label: 'Process' },
-                  { href: '#contact', label: 'Contact' }
-                ].map((item, index) => (
-                  <button
-                    key={item.href}
-                    onClick={() => handleLinkClick(item.href)}
-                    className="block w-full text-left py-4 px-4 text-foreground hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-300 font-medium text-lg animate-stagger-in"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    {item.label}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsOpen(false)} className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden" />
+            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25, stiffness: 200 }} className="fixed top-0 right-0 bottom-0 w-80 glass-navbar z-50 lg:hidden overflow-y-auto">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 rounded-full gradient-cyber flex items-center justify-center">
+                      <span className="text-background font-bold text-lg">R</span>
+                    </div>
+                    <span className="font-display font-bold text-foreground">Rehoman</span>
+                  </div>
+                  <button onClick={() => setIsOpen(false)} className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:neon-glow-cyan transition-all">
+                    <X className="w-5 h-5 text-foreground" />
                   </button>
-                ))}
-                
-                <div className="pt-6 border-t border-border/20">
-                  <Button 
-                    onClick={() => {
-                      scrollToContact();
-                      setIsOpen(false);
-                    }}
-                    variant="gradient"
-                    className="w-full rounded-full font-semibold text-lg py-4 animate-stagger-in shadow-lg"
-                    style={{ animationDelay: '350ms' }}
-                  >
-                    Let's Talk
-                  </Button>
                 </div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      )}
+                <nav className="mb-8">
+                  {menuItems.map((item, index) => (
+                    <motion.a key={item.href} href={item.href} onClick={handleLinkClick} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.05 }} className="block py-3 px-4 text-foreground hover:text-primary hover:bg-white/5 rounded-xl transition-all duration-300 font-medium">
+                      {item.label}
+                    </motion.a>
+                  ))}
+                </nav>
+                <motion.button onClick={() => { scrollToContact(); setIsOpen(false); }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="w-full btn-cyber text-center">
+                  Let's Talk
+                </motion.button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };
